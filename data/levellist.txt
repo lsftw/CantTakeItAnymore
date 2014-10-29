@@ -1,0 +1,15 @@
+// List of all level files
+// Put the name of each level before the filename
+// Put the name of each level file on a separate line
+//
+// Spaces will mess things up
+//
+// Text after // is ignored, leading and trailing spaces are ignored
+
+// Note: Sequence MATTERS as the "levelend" event goes to the following level
+
+CentralAirspace data/level/level1.txt
+CrowdedAirspace data/level/level2.txt
+BusyAirspace data/level/level3.txt
+BlockadedAirspace data/level/level4.txt
+TestAirspace data/level/testlevel.txt

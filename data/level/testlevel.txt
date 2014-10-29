@@ -1,0 +1,21 @@
+// Format: tick# event parameters(separated by comma)
+// (tick is another name for dt)
+// Ex: 10 fighter 20,20 means spawn a fighter at position (20,20) on tick #10
+// Ought to be in numerical order
+//
+// Text after // is ignored, leading and trailing spaces are ignored
+//
+// EVENT TABLE
+// spawn[fighter,guardian,etc] int,int(xpos,ypos)
+//
+
+
+0 hunter 400,-0
+
+
+
+15000 tickreset
+0 scout 50,50
+0 scout 50,400
+0 scout 700,50
+0 scout 700,400
