@@ -1,4 +1,4 @@
-package sgui;
+package ctia.engine.sgui;
 
 import javax.swing.JComponent;
 

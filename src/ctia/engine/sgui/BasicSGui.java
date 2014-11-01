@@ -1,4 +1,4 @@
-package sgui;
+package ctia.engine.sgui;
 
 // a framework for a simple gui
 public abstract interface BasicSGui {

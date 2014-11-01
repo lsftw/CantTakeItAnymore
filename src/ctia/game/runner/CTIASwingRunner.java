@@ -7,10 +7,10 @@ import java.util.HashMap;
 
 import javax.swing.JFrame;
 
-import sgui.Profiler;
-import sgui.Scene;
-import sgui.SceneHandler;
 import ctia.engine.data.Art;
+import ctia.engine.sgui.Profiler;
+import ctia.engine.sgui.Scene;
+import ctia.engine.sgui.SceneHandler;
 import ctia.game.scene.BattleScene;
 
 // runs the can't take it anymore game as a java swing application

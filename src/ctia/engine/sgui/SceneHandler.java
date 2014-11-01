@@ -1,4 +1,4 @@
-package sgui;
+package ctia.engine.sgui;
 
 public interface SceneHandler {
 	public void set(String key, Integer value);

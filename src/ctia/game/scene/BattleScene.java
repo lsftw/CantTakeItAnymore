@@ -5,8 +5,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
-import sgui.SGuiScene;
 import ctia.engine.data.Settings;
+import ctia.engine.sgui.SGuiScene;
 
 @SuppressWarnings("serial")
 public class BattleScene extends SGuiScene implements KeyListener {

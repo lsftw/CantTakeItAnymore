@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import ctia.engine.core.Level;
 import ctia.engine.data.Settings;
 
-// don't forget to add a key listener to the player!
+// TODO reimplement firing projectiles
+// Players are beings that respond to key presses 
 public abstract class Player extends Being implements KeyListener {
 	// Scoring
 	protected long score = 0;
@@ -41,7 +42,6 @@ public abstract class Player extends Being implements KeyListener {
 	}
 	public abstract int getBaseHealth();
 	public abstract int getBaseFireDelay();
-	public abstract int getBaseSpecialDelay();
 	public abstract int getBaseSpeed();
 
 	public void mapKey(Action action, int keyCode) {
@@ -116,7 +116,6 @@ public abstract class Player extends Being implements KeyListener {
 
 	protected void moved() { } // Called whenever player tries to move
 	protected abstract void fireProjectile();
-	protected abstract void useSpecial();
 
 	public void addScore(long points) { score += points; }
 	public void setScore(long points) { score = points; }

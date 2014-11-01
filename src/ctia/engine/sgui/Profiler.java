@@ -1,4 +1,4 @@
-package sgui;
+package ctia.engine.sgui;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;

@@ -1,4 +1,4 @@
-package sgui;
+package ctia.engine.sgui;
 
 import java.awt.Color;
 import java.awt.Dimension;

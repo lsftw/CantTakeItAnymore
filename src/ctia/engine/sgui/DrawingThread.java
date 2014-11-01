@@ -1,4 +1,4 @@
-package sgui;
+package ctia.engine.sgui;
 
 // a thread that continuously dts and redraws a simple gui
 public class DrawingThread extends Thread {
