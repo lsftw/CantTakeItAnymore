@@ -7,30 +7,5 @@
 //
 // Title Screen Images
 //
-titlescreen_graphic
-res/gui/title_graphic.png
-titlescreen_startbutton
-res/gui/title_startbutton.png
-titlescreen_quitbutton
-res/gui/title_quitbutton.png
-//
-// Ticks for Ship Selection Stat Display
-//
-tick_outline
-res/gui/tick_outline.png
-tick_full
-res/gui/tick_full.png
-//
-// Ship Icons for Ship Selection
-//
-icon_elavian
-res/gui/icon_elavian.png
-icon_kohsair
-res/gui/icon_kohsair.png
-icon_mulis
-res/gui/icon_mulis.png
-//
-// HUD Images
-//
-hud_border
-res/gui/hud_border.png
+//titlescreen_graphic
+//res/gui/title_graphic.png

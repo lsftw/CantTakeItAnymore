@@ -1,5 +1,0 @@
-// Level 3: Busy Airspace
-
-0 hunter 400,-90
-0 awaitbossdestruction
-0 levelend

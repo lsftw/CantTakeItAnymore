@@ -1,2 +1,0 @@
-fp_ss_1 = Kohsair firing, Guardians firing, HUD on bottom
-fp_ss_2 = Kohsair in random level with Fighters, Guardians, Protectors and Warlord, HUD on top (new style)
