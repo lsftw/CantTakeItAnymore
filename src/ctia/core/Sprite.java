@@ -6,7 +6,7 @@ import java.util.HashMap;
 import ctia.data.Settings;
 
 public class Sprite {
-	public static final int ANIMATION_FRAME_DELAY = Settings.valueInt("fps") * 2; // time between frames in ms
+	public static final int ANIMATION_FRAME_DELAY = Settings.getFps() * 2; // time between frames in ms
 	protected HashMap<String, Animation> animations = new HashMap<String, Animation>();
 
 

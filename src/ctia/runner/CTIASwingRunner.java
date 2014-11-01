@@ -7,13 +7,13 @@ import java.util.HashMap;
 
 import javax.swing.JFrame;
 
-import ctia.display.Art;
-import ctia.scene.MainMenuScene;
 import sgui.Profiler;
 import sgui.Scene;
 import sgui.SceneHandler;
+import ctia.data.Art;
+import ctia.scene.BattleScene;
 
-// runs the flying people game as a java swing application
+// runs the can't take it anymore game as a java swing application
 @SuppressWarnings("serial")
 public class CTIASwingRunner extends JFrame implements SceneHandler {
 	protected HashMap<String, Integer> sceneInfo = new HashMap<String, Integer>();
@@ -24,9 +24,9 @@ public class CTIASwingRunner extends JFrame implements SceneHandler {
 	public CTIASwingRunner() {
 		//profiler.start();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("Flying People");
+		this.setTitle("Can't Take it Anymore");
 		Art.load(this);
-		this.switchScene(MainMenuScene.makeInstance());
+		this.switchScene(BattleScene.makeInstance());
 	}
 
 	public static void main(String[] args) {

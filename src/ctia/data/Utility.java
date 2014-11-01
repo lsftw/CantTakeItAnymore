@@ -6,22 +6,22 @@ package ctia.data;
 public final class Utility {
 	private Utility() { }
 
-	public static void printInformation(Object infoFormatString, Object ... infoParams) {
+	public static void info(Object infoFormatString, Object ... infoParams) {
 		System.out.printf("[LOG] " + infoFormatString, infoParams);
 	}
-	public static void printInformation(Object information) {
+	public static void info(Object information) {
 		System.out.println("[LOG] " + information);
 	}
-	public static void printWarning(Object warnFormatString, Object ... warnParams) {
+	public static void warn(Object warnFormatString, Object ... warnParams) {
 		System.out.printf("[WAR] " + warnFormatString, warnParams);
 	}
-	public static void printWarning(Object warning) {
+	public static void warn(Object warning) {
 		System.out.println("[WAR] " + warning);
 	}
-	public static void printError(Object errFormatString, Object ... errParams) {
+	public static void error(Object errFormatString, Object ... errParams) {
 		System.err.printf("[ERR] " + errFormatString, errParams);
 	}
-	public static void printError(Object error) {
+	public static void error(Object error) {
 		System.err.println("[ERR] " + error);
 	}
 	/**

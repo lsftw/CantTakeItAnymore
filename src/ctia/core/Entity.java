@@ -5,12 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.util.Random;
 
-import ctia.data.Settings;
+import ctia.data.Art;
 import ctia.data.Utility;
-import ctia.display.AbilityMessage;
-import ctia.display.Art;
-import ctia.display.MessageDisplay;
-import ctia.scene.BattleScene;
 
 // represents a game entity with position and image
 public abstract class Entity {
@@ -45,7 +41,7 @@ public abstract class Entity {
 	private void initializeSprite() { // loads sprite based on class name
 		sprite = getSpriteToLoad();
 		if (sprite == null) {
-			Utility.printWarning("Sprite not found for " + this + ".");
+			Utility.warn("Sprite not found for " + this + ".");
 			sprite = Art.getSprite(MISSING_IMAGE);
 		}
 	}
@@ -146,42 +142,18 @@ public abstract class Entity {
 	public void setVy(double vy) { this.vy = vy; }
 
 	public boolean isActive() {
-		return container.hasentity(this);
-	}
-
-	public static int getMinX() {
-		return 0;
-	}
-	public static int getMinY() {
-		return Settings.valueBoolean("hud_on_top") ? BattleScene.HUD_HEIGHT : 0;
-	}
-	public static int getMaxX() {
-		return Settings.valueInt("window_width");
-	}
-	public static int getMaxY() {
-		return Settings.valueInt("window_height") - (Settings.valueBoolean("hud_on_top") ? 0 : BattleScene.HUD_HEIGHT);
+		return container.hasEntity(this);
 	}
 
 	public double angleBetween(double otherX, double otherY) {
 		double thisX = px + sx/2;
 		double thisY = py + sy/2;
-		double angle = Math.atan((otherY-thisY)/(otherX-thisX));
-		if (otherX < thisX) { // to the left
-			angle += Math.PI;
-		}
+		double angle = Math.atan2(otherY-thisY, otherX-thisX);
+//		double angle = Math.atan((otherY-thisY)/(otherX-thisX));
+//		if (otherX < thisX) { // to the left
+//			angle += Math.PI;
+//		}
 		return angle;
-	}
-
-	public void say(int messageNum, String message, int duration) {
-		sayBelow(messageNum, message, duration);
-	}
-	public void sayAbove(int messageNum, String message, int duration) {
-		MessageDisplay.getInstance().addMessage(
-				new AbilityMessage(this,-messageNum,message,duration,false));
-	}
-	public void sayBelow(int messageNum, String message, int duration) {
-		MessageDisplay.getInstance().addMessage(
-				new AbilityMessage(this,messageNum,message,duration));
 	}
 
 	public String toString() {

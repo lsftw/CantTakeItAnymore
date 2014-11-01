@@ -1,7 +1,6 @@
 package ctia.entity;
 
 import ctia.core.Entity;
-import ctia.data.Settings;
 
 public abstract class Projectile extends Entity {
 	protected Entity owner;
@@ -61,15 +60,12 @@ public abstract class Projectile extends Entity {
 	protected void hit(Entity collided) {
 		if (collided instanceof Being) {
 			collided.hitBy(this.owner, damage);
-			if (collided instanceof Player && ((Player)collided).health <= 0 && !Settings.valueBoolean("undying")) {
+			if (collided instanceof Player && ((Player)collided).health <= 0) {
 				return; // let player realize the cause of their loss
-			}
-			if (this instanceof ExplosiveProjectile) {
-				((ExplosiveProjectile)this).explode();
 			}
 
 			if (!hasAttribute(ATT_PIERCE)) {
-				container.removeentity(this);
+				container.removeEntity(this);
 			}
 		}
 	}
