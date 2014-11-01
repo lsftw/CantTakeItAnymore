@@ -10,18 +10,18 @@ import ctia.engine.entity.Enemy;
 import ctia.engine.entity.Player;
 import ctia.engine.entity.Projectile;
 
-public class Zone {
+public class Level {
 	public static final int DESTROY_MIN_X=-200, DESTROY_MIN_Y=-200, DESTROY_MAX_X=Settings.getMaxX(), DESTROY_MAX_Y=Settings.getMaxY();
 	// Boundaries
 	protected int boundMinX, boundMinY, boundMaxX, boundMaxY;
-	// Lists of Fliers
+	// Lists of Entities
 	protected List<Entity> entities = new ArrayList<Entity>();
 	protected List<Entity> entitiesToAdd = new ArrayList<Entity>();
 	protected List<Entity> entitiesToRemove = new ArrayList<Entity>();
 
 	protected boolean drawing = false;
 
-	public Zone(int xmin, int ymin, int xmax, int ymax) {
+	public Level(int xmin, int ymin, int xmax, int ymax) {
 		boundMinX = xmin; boundMinY = ymin;
 		boundMaxX = xmax; boundMaxY = ymax;
 	}

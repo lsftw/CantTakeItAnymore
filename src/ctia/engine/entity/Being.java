@@ -1,7 +1,7 @@
 package ctia.engine.entity;
 
 import ctia.engine.core.Entity;
-import ctia.engine.core.Zone;
+import ctia.engine.core.Level;
 
 // A entity that has health, used for the player and enemies
 public abstract class Being extends Entity {
@@ -9,7 +9,7 @@ public abstract class Being extends Entity {
 	protected int health = 0;
 	protected int collisionDamage = BASE_COLLISION_DAMAGE;
 
-	public Being(Zone container, double xpos, double ypos) {
+	public Being(Level container, double xpos, double ypos) {
 		super(container, xpos, ypos);
 	}
 

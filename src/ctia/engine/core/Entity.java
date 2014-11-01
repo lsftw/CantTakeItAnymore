@@ -13,7 +13,7 @@ public abstract class Entity {
 	private static final String MISSING_IMAGE = ".noimage";
 	protected static final Random rand = new Random(System.currentTimeMillis());
 	// Spatial
-	protected Zone container;
+	protected Level container;
 	protected int sx, sy;
 	protected double px, py;
 	protected double vx = 0, vy = 0;
@@ -23,7 +23,7 @@ public abstract class Entity {
 	protected boolean flipHorizontally = false;
 	protected boolean tiledHorizontally = false, tiledVertically = false;
 
-	public Entity(Zone container, double xpos, double ypos) {
+	public Entity(Level container, double xpos, double ypos) {
 		this.container = container;
 		px = xpos;
 		py = ypos;
@@ -125,7 +125,7 @@ public abstract class Entity {
 	}
 	public void hitBy(Entity attacker, int damage) { }
 
-	public Zone getZone() { return container; }
+	public Level getZone() { return container; }
 	public int getSx() { return sx; }
 	public int getSy() { return sy; }
 	public double getPx() { return px; }
@@ -133,7 +133,7 @@ public abstract class Entity {
 	public double getVx() { return vx; }
 	public double getVy() { return vy; }
 
-	public void setZone(Zone zone) { container = zone; }
+	public void setZone(Level zone) { container = zone; }
 	public void setSx(int sx) { this.sx = sx; }
 	public void setSy(int sy) { this.sy = sy; }
 	public void setPx(double px) { this.px = px; }

@@ -1,7 +1,7 @@
 package ctia.engine.entity;
 
 import ctia.engine.core.Entity;
-import ctia.engine.core.Zone;
+import ctia.engine.core.Level;
 import ctia.engine.data.Settings;
 
 public abstract class Enemy extends Being {
@@ -10,7 +10,7 @@ public abstract class Enemy extends Being {
 
 	protected double maxSpeed = 1000000;
 
-	public Enemy(Zone container, double xpos, double ypos) {
+	public Enemy(Level container, double xpos, double ypos) {
 		super(container, xpos, ypos);
 		resetStats();
 	}
@@ -34,7 +34,7 @@ public abstract class Enemy extends Being {
 		}
 	}
 
-	protected void hit(Being collided) { // collide with another entity, damaging both fliers
+	protected void hit(Being collided) { // collide with another entity, damaging both entities
 		this.hitBy(collided, this.collisionDamage);
 		collided.hitBy(this, collided.getCollisionDamage());
 	}

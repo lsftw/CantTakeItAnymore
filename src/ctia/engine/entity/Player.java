@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-import ctia.engine.core.Zone;
+import ctia.engine.core.Level;
 import ctia.engine.data.Settings;
 
 // don't forget to add a key listener to the player!
@@ -27,7 +27,7 @@ public abstract class Player extends Being implements KeyListener {
 	protected boolean preventMovement = false; // Prevents player from controlling movement
 	protected boolean preventFiring = false; // Prevents player from controlling firing
 
-	public Player(Zone container, double xpos, double ypos) {
+	public Player(Level container, double xpos, double ypos) {
 		super(container, xpos, ypos);
 		health = getBaseHealth();
 		fireDelay = getBaseFireDelay();
