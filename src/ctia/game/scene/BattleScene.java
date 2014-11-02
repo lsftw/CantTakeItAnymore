@@ -5,6 +5,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 
+import javax.swing.JFrame;
+
 import ctia.engine.core.Level;
 import ctia.engine.data.Settings;
 import ctia.engine.entity.Player;
@@ -31,7 +33,8 @@ public class BattleScene extends SGuiScene implements KeyListener {
 
 	protected void initGame() { // call after being added to a JFrame
 		player = new Hero(level, 0, 0);
-		level.addentity(player);
+		getFrame().addKeyListener(player);
+		level.addEntity(player);
 	}
 
 	protected void drawGui(Graphics g) {
@@ -51,4 +54,8 @@ public class BattleScene extends SGuiScene implements KeyListener {
 	}
 	public void keyReleased(KeyEvent ke) { }
 	public void keyTyped(KeyEvent ke) { }
+
+	private JFrame getFrame() { // used for adding listeners to player
+		return (JFrame)(this.getTopLevelAncestor());
+	}
 }

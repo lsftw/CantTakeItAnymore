@@ -26,7 +26,7 @@ public class Level {
 		boundMaxY = height;
 	}
 
-	public void addentity(Entity entity) {
+	public void addEntity(Entity entity) {
 		entitiesToAdd.add(entity);
 	}
 	public void removeEntity(Entity entity) {
