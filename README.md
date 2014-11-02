@@ -2,13 +2,15 @@ Can't Take It Anymore
 ======================
 
 2d top-down shooter w/ rpg elements.
+
 Prepare for a boss fight when your time runs out, if you aren't prepared, you can reset but with increased difficulty.
 
-For: UMD Game Dev Club's Game Jam, Theme: Countdown
+Developed For: UMD Game Dev Club's Game Jam  
+Theme: Countdown
 
-Developers:
-Shiliang Zhang
-Zhehao Chen
+Developers:  
+Shiliang Zhang (lsftw)  
+Zhehao Chen (zchen27)
 
 =======================
 
