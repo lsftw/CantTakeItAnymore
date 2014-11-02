@@ -12,7 +12,5 @@
 .noimage
 res/noimage.png
 
-//Player
-//res/player/elavian.png
-//res/player/kohsair.png
-//res/player/mulis.png
+Hero
+res/player/hero.png

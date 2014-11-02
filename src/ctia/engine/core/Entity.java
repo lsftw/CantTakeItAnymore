@@ -5,8 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.util.Random;
 
-import ctia.engine.data.Art;
 import ctia.engine.data.Utility;
+import ctia.engine.data.art.Art;
 
 // represents a game entity with position and image
 public abstract class Entity {

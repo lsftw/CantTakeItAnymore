@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 import javax.swing.JFrame;
 
-import ctia.engine.data.Art;
+import ctia.engine.data.art.Art;
 import ctia.engine.sgui.Profiler;
 import ctia.engine.sgui.Scene;
 import ctia.engine.sgui.SceneHandler;

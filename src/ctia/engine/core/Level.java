@@ -4,14 +4,12 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
-import ctia.engine.data.Settings;
 import ctia.engine.entity.Being;
 import ctia.engine.entity.Enemy;
 import ctia.engine.entity.Player;
 import ctia.engine.entity.Projectile;
 
 public class Level {
-	public static final int DESTROY_MIN_X=-200, DESTROY_MIN_Y=-200, DESTROY_MAX_X=Settings.getMaxX(), DESTROY_MAX_Y=Settings.getMaxY();
 	// Boundaries
 	protected int boundMinX, boundMinY, boundMaxX, boundMaxY;
 	// Lists of Entities
@@ -21,9 +19,11 @@ public class Level {
 
 	protected boolean drawing = false;
 
-	public Level(int xmin, int ymin, int xmax, int ymax) {
-		boundMinX = xmin; boundMinY = ymin;
-		boundMaxX = xmax; boundMaxY = ymax;
+	public Level(int width, int height) {
+		boundMinX = 0;
+		boundMinY = 0;
+		boundMaxX = width;
+		boundMaxY = height;
 	}
 
 	public void addentity(Entity entity) {
@@ -117,8 +117,21 @@ public class Level {
 		}
 		return null;
 	}
-	public boolean inBounds(int xpos, int ypos) {
+
+	public boolean inBounds(double xpos, double ypos) {
 		return xpos >= boundMinX && xpos <= boundMaxX && ypos >= boundMinY && ypos <= boundMaxY;
+	}
+	public double getMinX() {
+		return boundMinX;
+	}
+	public double getMaxX() {
+		return boundMaxX;
+	}
+	public double getMinY() {
+		return boundMinY;
+	}
+	public double getMaxY() {
+		return boundMaxY;
 	}
 
 	public void draw(Graphics g) {
@@ -133,7 +146,7 @@ public class Level {
 		for (int i = 0; i < entities.size(); i++) {
 			entity = entities.get(i);
 			entity.dt();
-			if (entity.px < DESTROY_MIN_X || entity.px > DESTROY_MAX_X || entity.py < DESTROY_MIN_Y || entity.py > DESTROY_MAX_Y) {
+			if (!inBounds(entity.getPx(), entity.getPy())) {
 				removeEntity(entity);
 			}
 		}

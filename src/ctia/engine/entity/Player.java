@@ -5,7 +5,6 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 import ctia.engine.core.Level;
-import ctia.engine.data.Settings;
 
 // TODO reimplement firing projectiles
 // Players are beings that respond to key presses 
@@ -46,7 +45,6 @@ public abstract class Player extends Being implements KeyListener {
 
 	public void mapKey(Action action, int keyCode) {
 		controlKey.set(action.ordinal(), keyCode);
-		// TODO warning if keys overlap (and offer to reset keys)
 	}
 	public void keyPressed(KeyEvent ke) {
 		Action action = actionOf(ke.getKeyCode());
@@ -108,10 +106,16 @@ public abstract class Player extends Being implements KeyListener {
 		}
 	}
 	protected void postDt() { // prevent moving out of bounds
-		if (px < Settings.getMinX()) px = Settings.getMinX();
-		if (px + sx > Settings.getMaxX()) px = Settings.getMaxX() - sx;
-		if (py < Settings.getMinY()) py = Settings.getMinY();
-		if (py + sy > Settings.getMaxY()) py = Settings.getMaxY() - sy;
+		if (px < container.getMinX()) {
+			px = container.getMinX();
+		} else if (px + sx > container.getMaxX()) {
+			px = container.getMaxX() - sx;
+		}
+		if (py < container.getMinY()) {
+			py = container.getMinY();
+		} else if (py + sy > container.getMaxY()) {
+			py = container.getMaxY() - sy;
+		}
 	}
 
 	protected void moved() { } // Called whenever player tries to move

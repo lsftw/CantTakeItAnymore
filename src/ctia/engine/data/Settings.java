@@ -4,10 +4,13 @@ public class Settings {
 	private static final int WINDOW_WIDTH = 800, WINDOW_HEIGHT = 600;
 	private static final int FPS = 50;
 
-	public static final int getWindowWidth() {
+	private static final String IMAGE_LIST = "data/imagelist.txt";
+	private static final String SPRITE_LIST = "data/spritelist.txt";
+
+	public static int getWindowWidth() {
 		return WINDOW_WIDTH;
 	}
-	public static final int getWindowHeight() {
+	public static int getWindowHeight() {
 		return WINDOW_HEIGHT;
 	}
 	public static int getMinX() {
@@ -22,7 +25,14 @@ public class Settings {
 	public static int getMaxY() {
 		return WINDOW_HEIGHT;
 	}
-	public static final int getFps() {
+	public static int getFps() {
 		return FPS;
+	}
+
+	public static String getImageListFile() {
+		return IMAGE_LIST;
+	}
+	public static String getSpriteListFile() {
+		return SPRITE_LIST;
 	}
 }
