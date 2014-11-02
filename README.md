@@ -19,6 +19,7 @@ Zhehao Chen
 ###Engine Design
 ####Game is frame-based
 * Game logic steps with each game frame **dt()** and redraws screen with each game frame **draw()**
+
 ####Game uses a container hierarchy for modularity
 * **Entity** is an individual game object, like a player, an enemy, a projectile, or an obstacle
 * **Level** contains multiple entities and handles interaction between them such as collision detection
