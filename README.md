@@ -40,7 +40,8 @@ Zhehao Chen (zchen27)
 | A2|Scrolling/panning level||
 | A3|Projectile firing||
 | A4|Destroyable enemies||
-| A5|Enemies that attack||
+| A5|Enemies with pathfinding||
+| A6|Enemies that attack||
 |   |**RPG ELEMENTS**||
 | B1|Brainstorm RPG elements to add||
 | B2|Add RPG elements||
