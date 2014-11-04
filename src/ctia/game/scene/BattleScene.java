@@ -16,7 +16,7 @@ import ctia.game.entity.Hero;
 @SuppressWarnings("serial")
 public class BattleScene extends SGuiScene implements KeyListener {
 	protected static final Random rand = new Random(System.currentTimeMillis());
-	private Level level = new Level(Settings.getMaxX(), Settings.getMaxX());
+	private Level level = new Level(Settings.getMaxX(), Settings.getMaxY());
 	private Player player;
 
 	private BattleScene() {
