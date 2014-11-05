@@ -1,5 +1,6 @@
 package ctia.engine.entity;
 
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -119,7 +120,7 @@ public abstract class Player extends Being implements KeyListener {
 	}
 
 	protected void moved() { } // Called whenever player tries to move
-	protected abstract void fireProjectile();
+	public abstract void fireProjectile(Point p);
 
 	public void addScore(long points) { score += points; }
 	public void setScore(long points) { score = points; }

@@ -2,10 +2,12 @@ package ctia.game.entity;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 
 import ctia.engine.core.Level;
 import ctia.engine.data.Settings;
 import ctia.engine.entity.Player;
+import ctia.engine.entity.Projectile;
 
 public class Hero extends Player {
 	private static final int HEALTH = 10000;
@@ -27,8 +29,11 @@ public class Hero extends Player {
 	}
 
 	@Override
-	protected void fireProjectile() {
+	public void fireProjectile(Point p) {
 		// TODO Auto-generated method stub
+		double angle = Math.atan2(p.y, p.x);
+		Projectile bullet = new Bullet(this, angle);
+		container.addEntity(bullet);
 	}
 
 	public void draw(Graphics g) {

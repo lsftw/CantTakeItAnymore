@@ -3,6 +3,8 @@ package ctia.game.scene;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -17,7 +19,7 @@ import ctia.game.entity.Hero;
 import ctia.game.entity.TestEnemy;
 
 @SuppressWarnings("serial")
-public class BattleScene extends SGuiScene implements KeyListener {
+public class BattleScene extends SGuiScene implements KeyListener, MouseListener {
 	protected static final Random rand = new Random(System.currentTimeMillis());
 	private Level level = new Level(Settings.getMaxX(), Settings.getMaxY());
 	private Player player;
@@ -59,6 +61,14 @@ public class BattleScene extends SGuiScene implements KeyListener {
 	}
 	public void keyReleased(KeyEvent ke) { }
 	public void keyTyped(KeyEvent ke) { }
+
+	public void mouseClicked(MouseEvent me) {
+		player.fireProjectile(me.getPoint());
+	}
+	public void mouseEntered(MouseEvent me) { }
+	public void mouseExited(MouseEvent me) { }
+	public void mousePressed(MouseEvent me) { }
+	public void mouseReleased(MouseEvent me) { }
 
 	private JFrame getFrame() { // used for adding listeners to player
 		return (JFrame)(this.getTopLevelAncestor());
