@@ -43,7 +43,7 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 		player = new Hero(level, 0, 0);
 		getFrame().addKeyListener(player);
 		level.addEntity(player);
-		Entity enemy = new TestEnemy(level, 200, 100);
+		Entity enemy = new TestEnemy(level, 400, 400);
 		level.addEntity(enemy);
 	}
 
