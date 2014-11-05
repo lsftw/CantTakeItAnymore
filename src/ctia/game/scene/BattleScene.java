@@ -7,11 +7,14 @@ import java.util.Random;
 
 import javax.swing.JFrame;
 
+import ctia.engine.core.Entity;
 import ctia.engine.core.Level;
 import ctia.engine.data.Settings;
+import ctia.engine.entity.Enemy;
 import ctia.engine.entity.Player;
 import ctia.engine.sgui.SGuiScene;
 import ctia.game.entity.Hero;
+import ctia.game.entity.TestEnemy;
 
 @SuppressWarnings("serial")
 public class BattleScene extends SGuiScene implements KeyListener {
@@ -35,6 +38,8 @@ public class BattleScene extends SGuiScene implements KeyListener {
 		player = new Hero(level, 0, 0);
 		getFrame().addKeyListener(player);
 		level.addEntity(player);
+		Entity enemy = new TestEnemy(level, 200, 100);
+		level.addEntity(enemy);
 	}
 
 	protected void drawGui(Graphics g) {
