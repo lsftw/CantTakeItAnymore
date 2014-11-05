@@ -38,8 +38,8 @@ Zhehao Chen (zchen27)
 |   |**GENERIC TOP-DOWN GAME PROTOTYPE**||
 | A1|Visible, player-controllable entity|11/1|
 | A2|Scrolling/panning level||
-| A3|Projectile firing||
-| A4|Destroyable enemies||
+| A3|Projectile firing|11/5|
+| A4|Destroyable enemies|11/5|
 | A5|Enemies with pathfinding||
 | A6|Enemies that attack||
 |   |**RPG ELEMENTS**||

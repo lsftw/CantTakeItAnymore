@@ -10,5 +10,6 @@ public class Bullet extends Projectile {
 		damage = 20;
 		vx = Math.cos(angle) * SPEED;
 		vy = Math.sin(angle) * SPEED;
+		targetting = TargettingType.OTHER;
 	}
 }

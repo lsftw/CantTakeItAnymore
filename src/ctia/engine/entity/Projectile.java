@@ -2,10 +2,11 @@ package ctia.engine.entity;
 
 import ctia.engine.core.Entity;
 
+// TODO remove or change ATT_LASER
 public abstract class Projectile extends Entity {
 	protected Entity owner;
 	// used in collision checking
-	public enum TargettingType {ALL, OTHER, ENEMY}
+	public enum TargettingType {ALL, OTHER, ENEMY, PLAYER}
 	protected TargettingType targetting = TargettingType.ALL;
 
 	protected static final short ATT_PIERCE = 1 << 0; // hits multiple targets
@@ -52,6 +53,9 @@ public abstract class Projectile extends Entity {
 			break;
 		case ENEMY:
 			collided = container.getEnemyCollided(this, hasAttribute(ATT_LASER));
+			break;
+		case PLAYER:
+			collided = container.getPlayerCollided(this);
 			break;
 		}
 

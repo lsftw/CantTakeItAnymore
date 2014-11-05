@@ -64,7 +64,9 @@ public class Level {
 		for (int i = 0; i < entities.size(); i++) {
 			entity = entities.get(i);
 			if (entity != collider && entity != toIgnore && entity.collidesWith(collider)) {
-				return entity;
+				if (entity instanceof Player != toIgnore instanceof Player) { // only hit other team
+					return entity;
+				}
 			}
 		}
 		return null;
@@ -113,6 +115,16 @@ public class Level {
 				if (entity.collidesWith(collider)) {
 					return (Projectile)entity;
 				}
+			}
+		}
+		return null;
+	}
+	public Player getPlayerCollided(Entity collider) {
+		Entity entity;
+		for (int i = 0; i < entities.size(); i++) {
+			entity = entities.get(i);
+			if (entity != collider && entity instanceof Player && entity.collidesWith(collider)) {
+				return (Player)entity;
 			}
 		}
 		return null;
