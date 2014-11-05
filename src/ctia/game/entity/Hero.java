@@ -30,8 +30,7 @@ public class Hero extends Player {
 
 	@Override
 	public void fireProjectile(Point p) {
-		// TODO Auto-generated method stub
-		double angle = Math.atan2(p.y, p.x);
+		double angle = Math.atan2(p.y - (this.py + this.sy / 2), p.x - (this.px + this.sx / 2));
 		Projectile bullet = new Bullet(this, angle);
 		container.addEntity(bullet);
 	}
