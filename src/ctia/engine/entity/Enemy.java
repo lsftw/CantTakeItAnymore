@@ -39,8 +39,10 @@ public abstract class Enemy extends Being {
 		collided.hitBy(this, collided.getCollisionDamage());
 	}
 	public void hitBy(Entity attacker, int damage) { // for giving points on destruction
-		lastAttacker = attacker;
-		super.hitBy(attacker, damage);
+		if (Settings.isEnemyFriendlyFireEnabled() || !(attacker instanceof Enemy)) {
+			lastAttacker = attacker;
+			super.hitBy(attacker, damage);
+		}
 	}
 	public void awardAttacker(long points) {
 		if (lastAttacker instanceof Player) {

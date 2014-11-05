@@ -40,7 +40,7 @@ public class TestEnemy extends Enemy {
 	@Override
 	public void resetStats() {
 		// TODO Auto-generated method stub
-		health = 10000000;
+		health = 100;
 	}
 
 }

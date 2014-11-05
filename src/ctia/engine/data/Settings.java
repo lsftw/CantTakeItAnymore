@@ -7,6 +7,8 @@ public class Settings {
 	private static final String IMAGE_LIST = "data/imagelist.txt";
 	private static final String SPRITE_LIST = "data/spritelist.txt";
 
+	private static final boolean ENEMY_FRIENDLY_FIRE_ENABLED = false;
+
 	public static int getWindowWidth() {
 		return WINDOW_WIDTH;
 	}
@@ -34,5 +36,9 @@ public class Settings {
 	}
 	public static String getSpriteListFile() {
 		return SPRITE_LIST;
+	}
+
+	public static boolean isEnemyFriendlyFireEnabled() {
+		return ENEMY_FRIENDLY_FIRE_ENABLED;
 	}
 }
