@@ -12,7 +12,7 @@ import ctia.game.entity.projectile.Bullet;
 
 public class Hero extends Player {
 	private static final int HEALTH = 10000;
-	private static final int FIRE_DELAY = Settings.getFps();
+	private static final int FIRE_DELAY = Settings.getFps() / 10;
 	private static final int SPEED = 5;
 
 	public Hero(Level container, double xpos, double ypos) {

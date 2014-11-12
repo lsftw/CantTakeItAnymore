@@ -104,9 +104,16 @@ public abstract class Player extends Being implements KeyListener {
 				vx = moveSpeed; this.moved();
 			}
 		}
+		fireCooldown--;
 	}
 
 	protected void moved() { } // Called whenever player tries to move
+	public void tryToFire(Point p) {
+		if (fireCooldown <= 0) {
+			fireProjectile(p);
+			fireCooldown = fireDelay;
+		}
+	}
 	public abstract void fireProjectile(Point p);
 
 	public void addScore(long points) { score += points; }
