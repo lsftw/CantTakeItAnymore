@@ -1,6 +1,7 @@
 package ctia.engine.entity;
 
 import ctia.engine.core.Entity;
+import ctia.engine.data.Settings;
 
 // TODO remove or change ATT_LASER
 public abstract class Projectile extends Entity {
@@ -13,6 +14,7 @@ public abstract class Projectile extends Entity {
 	protected static final short ATT_LASER = 1 << 1; // hits first target
 	protected short attributes = 0; // bit set
 	protected int damage;
+	protected int lifespan = Settings.getFps() * 5;
 
 	public Projectile(Entity owner, double xpos, double ypos) {
 		super(owner.getZone(), xpos, ypos);
@@ -36,6 +38,13 @@ public abstract class Projectile extends Entity {
 		angle = Math.atan2(vy, vx);
 		checkCollision();
 		postDt();
+	}
+
+	public void postDt() {
+		lifespan--;
+		if (lifespan <= 0) {
+			container.removeEntity(this);
+		}
 	}
 
 	protected Entity checkCollision() {
