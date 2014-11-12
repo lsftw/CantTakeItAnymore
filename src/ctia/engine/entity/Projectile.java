@@ -33,6 +33,7 @@ public abstract class Projectile extends Entity {
 		preDt();
 		px += vx;
 		py += vy;
+		angle = Math.atan2(vy, vx);
 		checkCollision();
 		postDt();
 	}
