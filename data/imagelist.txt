@@ -4,6 +4,9 @@
 // Preceding and trailing whitespace is ignored for every line
 // images should be still, animation is typically not supported
 
+background
+res/background/beach.png
+
 //
 // Title Screen Images
 //

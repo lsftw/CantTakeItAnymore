@@ -57,6 +57,8 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 		if (playerFiring) {
 			Point p = MouseInfo.getPointerInfo().getLocation();
 			SwingUtilities.convertPointFromScreen(p, this);
+			p.x = (int) (p.x + level.getXscroll());
+			p.y = (int) (p.y + level.getYscroll());
 			player.fireProjectile(p);
 		}
 		level.dt();

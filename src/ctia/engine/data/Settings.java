@@ -1,5 +1,9 @@
 package ctia.engine.data;
 
+import java.awt.Image;
+
+import ctia.engine.data.art.Art;
+
 public class Settings {
 	private static final int WINDOW_WIDTH = 800, WINDOW_HEIGHT = 600;
 	private static final int FPS = 50;
@@ -40,5 +44,8 @@ public class Settings {
 
 	public static boolean isEnemyFriendlyFireEnabled() {
 		return ENEMY_FRIENDLY_FIRE_ENABLED;
+	}
+	public static Image getBackground() {
+		return Art.getImage("background");
 	}
 }

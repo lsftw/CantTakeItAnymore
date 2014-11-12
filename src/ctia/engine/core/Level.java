@@ -1,6 +1,7 @@
 package ctia.engine.core;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,10 +130,17 @@ public class Level {
 	}
 
 	public void draw(Graphics g) {
+		drawBackground(g);
 		for (int i = 0; i < entities.size(); i++) {
 			entities.get(i).draw(g);
 		}
 	}
+	private void drawBackground(Graphics g) {
+		// TODO Auto-generated method stub
+		Image image = Settings.getBackground();
+		g.drawImage(image, 0, 0, null);
+	}
+
 	public void dt() {
 		updateEntities();
 
