@@ -18,6 +18,7 @@ import ctia.engine.data.Settings;
 import ctia.engine.entity.Player;
 import ctia.engine.sgui.SGuiScene;
 import ctia.game.entity.Hero;
+import ctia.game.entity.SpawnPoint;
 import ctia.game.entity.TestEnemy;
 
 @SuppressWarnings("serial")
@@ -43,7 +44,7 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 		player = new Hero(level, 0, 0);
 		getFrame().addKeyListener(player);
 		level.addEntity(player);
-		Entity enemy = new TestEnemy(level, 400, 400);
+		Entity enemy = new SpawnPoint(level, 400, 400);
 		level.addEntity(enemy);
 	}
 

@@ -19,5 +19,8 @@ TestEnemy
 res/player/hero.png
 
 Bullet
+res/bullets/bullet0.png
+
+SpawnPoint
 res/player/hero.png
 
