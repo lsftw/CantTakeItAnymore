@@ -1,4 +1,4 @@
-package ctia.game.entity;
+package ctia.game.entity.projectile;
 
 import ctia.engine.core.Entity;
 import ctia.engine.entity.Projectile;

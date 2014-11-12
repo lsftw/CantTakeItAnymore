@@ -8,6 +8,7 @@ import ctia.engine.core.Level;
 import ctia.engine.data.Settings;
 import ctia.engine.entity.Player;
 import ctia.engine.entity.Projectile;
+import ctia.game.entity.projectile.Bullet;
 
 public class Hero extends Player {
 	private static final int HEALTH = 10000;
