@@ -22,7 +22,7 @@ TestRammer
 res/player/rammer.png
 
 Bullet
-res/bullets/bullet0.png
+res/bullets/bullet_boss.png
 
 PiercingBullet
 res/bullets/bullet0.png
