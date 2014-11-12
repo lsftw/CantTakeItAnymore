@@ -33,11 +33,12 @@ public abstract class Projectile extends Entity {
 
 	public void dt() {
 		preDt();
-		px += vx;
-		py += vy;
-		angle = Math.atan2(vy, vx);
+		updatePhysics();
 		checkCollision();
 		postDt();
+	}
+	protected void updatePhysics() {
+		super.updatePhysics();
 	}
 
 	public void postDt() {

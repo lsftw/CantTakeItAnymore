@@ -28,6 +28,7 @@ public abstract class Entity {
 		px = xpos;
 		py = ypos;
 		initialize();
+		updateAngle();
 	}
 
 	// Subclasses that modify sprite initialization should override this
@@ -110,12 +111,18 @@ public abstract class Entity {
 	protected void preDt() { }
 	public void dt() {
 		preDt();
-		px += vx;
-		py += vy;
-		angle = Math.atan2(vy, vx);
+		updatePhysics();
 		postDt();
 	}
 	protected void postDt() { }
+	protected void updatePhysics() {
+		px += vx;
+		py += vy;
+		updateAngle();
+	}
+	protected void updateAngle() {
+		angle = Math.atan2(vy, vx);
+	}
 
 	public boolean collidesWith(Entity other) { // rectangle collision check
 		if (((other.px<=this.px+this.sx&&other.px+other.sx>=this.px+this.sx)||

@@ -12,5 +12,6 @@ public class PiercingBullet extends Projectile {
 		vy = Math.sin(angle) * SPEED;
 		targetting = TargettingType.OTHER;
 		addAttribute(ATT_PIERCE);
+		updateAngle();
 	}
 }
