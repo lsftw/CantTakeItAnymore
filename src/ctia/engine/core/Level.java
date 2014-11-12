@@ -138,7 +138,7 @@ public class Level {
 	private void drawBackground(Graphics g) {
 		// TODO Auto-generated method stub
 		Image image = Settings.getBackground();
-		g.drawImage(image, 0, 0, null);
+		g.drawImage(image, -xScroll, -yScroll, null);
 	}
 
 	public void dt() {
