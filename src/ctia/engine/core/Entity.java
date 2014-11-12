@@ -62,7 +62,7 @@ public abstract class Entity {
 		Image toDraw = getFrameToDraw();
 		double tx = px + sx/2;
 		double ty = py + sy/2;
-		g2.translate(tx, ty);
+		g2.translate(tx-this.container.getXscroll(), ty-this.container.getYscroll());
 		g2.rotate(angle);
 		//if (angle!=0)System.out.println(angle);
 		// if tiling, goes through and draws all images until it reaches the necessary dimensions
@@ -92,19 +92,19 @@ public abstract class Entity {
 						}
 					}
 //					g2.translate(-container.getXscroll(), -container.getYscroll());
-					g2.drawImage(toDraw, width*(i) - sx/2-this.container.getXscroll(),
-							height*(j) - sy/2-this.container.getYscroll(),
-							width*(i)+drawWidth - sx/2-this.container.getXscroll(),
-							height*(j)+drawHeight - sy/2-this.container.getYscroll(),
+					g2.drawImage(toDraw, width*(i) - sx/2,
+							height*(j) - sy/2,
+							width*(i)+drawWidth - sx/2,
+							height*(j)+drawHeight - sy/2,
 							0, 0, cropWidth, cropHeight, null);
 				}
 			}
 		} else { // horizontal flipping for non-tiled
-			g2.drawImage(toDraw, flipHorizontally?sx/2:-sx/2-this.container.getXscroll(),
-					-sy/2-this.container.getYscroll(), (flipHorizontally?-sx:sx), sy, null);
+			g2.drawImage(toDraw, flipHorizontally?sx/2:-sx/2,
+					-sy/2, (flipHorizontally?-sx:sx), sy, null);
 		}
 		g2.rotate(-angle);
-		g2.translate(-tx, -ty);
+		g2.translate(-tx+this.container.getXscroll(), -ty+this.container.getYscroll());
 	}
 
 	protected void preDt() { }
@@ -112,6 +112,7 @@ public abstract class Entity {
 		preDt();
 		px += vx;
 		py += vy;
+		angle = Math.atan2(vy, vx);
 		postDt();
 	}
 	protected void postDt() { }
