@@ -16,14 +16,14 @@ Hero
 res/player/hero.png
 
 TestEnemy
-res/player/hero.png
+res/player/testenemy.png
 
 TestRammer
-res/player/hero.png
+res/player/rammer.png
 
 Bullet
 res/bullets/bullet0.png
 
 SpawnPoint
-res/player/hero.png
+res/player/spawner.png
 
