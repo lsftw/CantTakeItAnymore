@@ -18,6 +18,9 @@ res/player/hero.png
 TestEnemy
 res/player/hero.png
 
+TestRammer
+res/player/hero.png
+
 Bullet
 res/bullets/bullet0.png
 

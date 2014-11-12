@@ -13,7 +13,7 @@ public class SpawnPoint extends Enemy {
 		time %= 100;
 
 		if (time == 0) {
-			container.addEntity(new TestEnemy(container, px + 100, py + 100));
+			container.addEntity(new TestRammer(container, px + 100, py + 100));
 		}
 	}
 
