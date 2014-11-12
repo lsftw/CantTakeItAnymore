@@ -4,26 +4,24 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
+import ctia.engine.data.Settings;
 import ctia.engine.entity.Being;
 import ctia.engine.entity.Enemy;
 import ctia.engine.entity.Player;
 import ctia.engine.entity.Projectile;
 
 public class Level {
-	// Boundaries
-	protected int boundMinX, boundMinY, boundMaxX, boundMaxY;
 	// Lists of Entities
 	protected List<Entity> entities = new ArrayList<Entity>();
 	protected List<Entity> entitiesToAdd = new ArrayList<Entity>();
 	protected List<Entity> entitiesToRemove = new ArrayList<Entity>();
+	// Scrolling
+	protected Entity followed;
+	protected int xScroll = 0, yScroll = 0;
 
 	protected boolean drawing = false;
 
-	public Level(int width, int height) {
-		boundMinX = 0;
-		boundMinY = 0;
-		boundMaxX = width;
-		boundMaxY = height;
+	public Level() {
 	}
 
 	public void addEntity(Entity entity) {
@@ -130,22 +128,6 @@ public class Level {
 		return null;
 	}
 
-	public boolean inBounds(double xpos, double ypos) {
-		return xpos >= boundMinX && xpos <= boundMaxX && ypos >= boundMinY && ypos <= boundMaxY;
-	}
-	public double getMinX() {
-		return boundMinX;
-	}
-	public double getMaxX() {
-		return boundMaxX;
-	}
-	public double getMinY() {
-		return boundMinY;
-	}
-	public double getMaxY() {
-		return boundMaxY;
-	}
-
 	public void draw(Graphics g) {
 		for (int i = 0; i < entities.size(); i++) {
 			entities.get(i).draw(g);
@@ -158,13 +140,24 @@ public class Level {
 		for (int i = 0; i < entities.size(); i++) {
 			entity = entities.get(i);
 			entity.dt();
-			if (!inBounds(entity.getPx(), entity.getPy())) {
-				removeEntity(entity);
-			}
+			// TODO when to remove entity?
 		}
 
 		updateEntities();
+		updateScrolling();
 	}
+	// Scrolling
+	public void follow(Entity entity) {
+		followed = entity;
+	}
+	private void updateScrolling() {
+		if (followed != null) {
+			xScroll = (int) (followed.getPx() + followed.getSx() / 2 - Settings.getWindowWidth()/2);
+			yScroll = (int) (followed.getPy() + followed.getSx() / 2 - Settings.getWindowHeight()/2);
+		}
+	}
+	public int getXscroll() { return xScroll; }
+	public int getYscroll() { return yScroll; }
 
 	private void updateEntities() {
 		entities.addAll(entitiesToAdd);

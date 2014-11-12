@@ -41,7 +41,8 @@ public class Hero extends Player {
 	}
 
 	private void drawDebugInfo(Graphics g) {
-		int beginX = (int)px + sx;
+		int beginX = (int)px + sx - this.container.getXscroll();
+		int beginY = (int)py - this.container.getYscroll();
 		// Don't let text run offscreen, gradually flip side to the left after passing middle of screen
 		final int threshold = Settings.getMaxX() / 2;
 		if (beginX > threshold) {
@@ -49,8 +50,8 @@ public class Hero extends Player {
 			beginX = beginX - diff;
 		}
 		g.setColor(Color.BLUE);
-		g.drawString("HP: " + health, beginX, (int)py + sy / 3);
-		g.drawString("X: " + px, beginX, (int)py + sy * 2 / 3);
-		g.drawString("Y: " + py, beginX, (int)py + sy);
+		g.drawString("HP: " + health, beginX, beginY + sy / 3);
+		g.drawString("X: " + px, beginX, beginY + sy * 2 / 3);
+		g.drawString("Y: " + py, beginX, beginY + sy);
 	}
 }

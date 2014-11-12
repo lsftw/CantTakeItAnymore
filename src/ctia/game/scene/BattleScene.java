@@ -24,7 +24,7 @@ import ctia.game.entity.TestEnemy;
 @SuppressWarnings("serial")
 public class BattleScene extends SGuiScene implements KeyListener, MouseListener {
 	protected static final Random rand = new Random(System.currentTimeMillis());
-	private Level level = new Level(Settings.getMaxX(), Settings.getMaxY());
+	private Level level = new Level();
 	private Player player;
 	private boolean playerFiring = false;
 
@@ -44,6 +44,7 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 		player = new Hero(level, 0, 0);
 		getFrame().addKeyListener(player);
 		level.addEntity(player);
+		level.follow(player);
 		Entity enemy = new SpawnPoint(level, 400, 400);
 		level.addEntity(enemy);
 	}

@@ -91,14 +91,17 @@ public abstract class Entity {
 							cropHeight = drawHeight;
 						}
 					}
-					g2.drawImage(toDraw, width*(i) - sx/2, height*(j) - sy/2,
-							width*(i)+drawWidth - sx/2, height*(j)+drawHeight - sy/2,
+//					g2.translate(-container.getXscroll(), -container.getYscroll());
+					g2.drawImage(toDraw, width*(i) - sx/2-this.container.getXscroll(),
+							height*(j) - sy/2-this.container.getYscroll(),
+							width*(i)+drawWidth - sx/2-this.container.getXscroll(),
+							height*(j)+drawHeight - sy/2-this.container.getYscroll(),
 							0, 0, cropWidth, cropHeight, null);
 				}
 			}
 		} else { // horizontal flipping for non-tiled
-			g2.drawImage(toDraw, flipHorizontally?sx/2:-sx/2,
-					-sy/2, (flipHorizontally?-sx:sx), sy, null);
+			g2.drawImage(toDraw, flipHorizontally?sx/2:-sx/2-this.container.getXscroll(),
+					-sy/2-this.container.getYscroll(), (flipHorizontally?-sx:sx), sy, null);
 		}
 		g2.rotate(-angle);
 		g2.translate(-tx, -ty);

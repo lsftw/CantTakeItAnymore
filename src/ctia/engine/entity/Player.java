@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import ctia.engine.core.Level;
 
-// TODO reimplement firing projectiles
 // Players are beings that respond to key presses 
 public abstract class Player extends Being implements KeyListener {
 	// Scoring
@@ -104,18 +103,6 @@ public abstract class Player extends Being implements KeyListener {
 			} else if (keyHeld(Action.MOVE_RIGHT)) {
 				vx = moveSpeed; this.moved();
 			}
-		}
-	}
-	protected void postDt() { // prevent moving out of bounds
-		if (px < container.getMinX()) {
-			px = container.getMinX();
-		} else if (px + sx > container.getMaxX()) {
-			px = container.getMaxX() - sx;
-		}
-		if (py < container.getMinY()) {
-			py = container.getMinY();
-		} else if (py + sy > container.getMaxY()) {
-			py = container.getMaxY() - sy;
 		}
 	}
 
