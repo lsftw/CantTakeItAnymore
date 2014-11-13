@@ -22,10 +22,10 @@ TestRammer
 res/player/rammer.png
 
 Bullet
-res/bullets/bullet_boss.png
+res/bullets/bullet0.png
 
 PiercingBullet
-res/bullets/bullet0.png
+res/bullets/bullet1.png
 
 SpawnPoint
 res/player/spawner.png
