@@ -21,6 +21,9 @@ res/player/testenemy.png
 TestRammer
 res/player/rammer.png
 
+TestBoss
+res/player/testboss.png
+
 Bullet
 res/bullets/bullet0.png
 

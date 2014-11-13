@@ -17,6 +17,7 @@ import ctia.engine.core.Level;
 import ctia.engine.data.Settings;
 import ctia.engine.entity.Player;
 import ctia.engine.sgui.SGuiScene;
+import ctia.game.TestBoss;
 import ctia.game.entity.Hero;
 import ctia.game.entity.SpawnPoint;
 import ctia.game.entity.TestEnemy;
@@ -45,8 +46,10 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 		getFrame().addKeyListener(player);
 		level.addEntity(player);
 		level.follow(player);
-		Entity enemy = new SpawnPoint(level, 400, 400);
-		level.addEntity(enemy);
+		Entity boss = new TestBoss(level, 400, 400);
+		level.addEntity(boss);
+		/*Entity enemy = new SpawnPoint(level, 400, 400);
+		level.addEntity(enemy);*/
 	}
 
 	protected void drawGui(Graphics g) {
