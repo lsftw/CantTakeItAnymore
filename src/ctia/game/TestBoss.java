@@ -3,6 +3,7 @@ package ctia.game;
 import ctia.engine.core.Level;
 import ctia.engine.entity.Enemy;
 import ctia.engine.entity.Projectile;
+import ctia.game.entity.projectile.Bullet;
 import ctia.game.entity.projectile.PiercingBullet;
 
 public class TestBoss extends Enemy {
@@ -23,26 +24,34 @@ public class TestBoss extends Enemy {
 		double dy = ppy - py;
 		double distance = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
 
-		vx = dx / distance * 3.0;
-		vy = dy / distance * 3.0;
+		vx = dx / distance * 1.0;
+		vy = dy / distance * 1.0;
 
 		time++;
 		time %= 100;
+		
+		int bullets = 5;
 		
 		if (time % 10 == 0) {
 
 			double angle = Math.atan2(ppy - (this.py + this.sy / 2), ppx
 					- (this.px + this.sx / 2));
-			Projectile bullet0 = new PiercingBullet(this, angle - (Math.PI / 3));
-			Projectile bullet1 = new PiercingBullet(this, angle - (Math.PI / 6));
-			Projectile bullet2 = new PiercingBullet(this, angle);
-			Projectile bullet3 = new PiercingBullet(this, angle + (Math.PI / 6));
-			Projectile bullet4 = new PiercingBullet(this, angle + (Math.PI / 3));
-			container.addEntity(bullet0);
-			container.addEntity(bullet1);
-			container.addEntity(bullet2);
-			container.addEntity(bullet3);
-			container.addEntity(bullet4);
+			for (int i = 0; i < bullets; i++)
+			{
+				Projectile b;
+				double offset = Math.random() * Math.PI / 36 * (double) (i - bullets / 2);
+				if (Math.random() < 0.5)
+				{
+					b = new Bullet(this, angle + offset);
+					
+				}
+				else
+				{
+					b = new PiercingBullet(this, angle + offset);
+				}
+				container.addEntity(b);
+			}
+			
 		}
 
 		super.preDt();
