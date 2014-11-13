@@ -121,7 +121,9 @@ public abstract class Entity {
 		updateAngle();
 	}
 	protected void updateAngle() {
-		angle = Math.atan2(vy, vx);
+		if (vx != 0 || vy != 0) { // don't change angle when staying still
+			angle = Math.atan2(vy, vx);
+		}
 	}
 
 	public boolean collidesWith(Entity other) { // rectangle collision check
