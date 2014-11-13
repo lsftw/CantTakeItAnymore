@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
 @SuppressWarnings("serial")
 public abstract class SGuiScene extends Scene implements BasicSGui {
 	// Graphics
-	public final int screenWidth, screenHeight;
+	protected int screenWidth, screenHeight;
 	protected DrawingThread drawer = new DrawingThread(this);
 
 	protected BufferedImage ibuff = null;
@@ -28,6 +28,17 @@ public abstract class SGuiScene extends Scene implements BasicSGui {
 		this.screenHeight = screenDimensions.height;
 		setSize(screenDimensions);
 		setPreferredSize(screenDimensions); // for pack()
+	}
+
+	public void updateSize(int screenWidth, int screenHeight) {
+		this.screenWidth = screenWidth;
+		this.screenHeight = screenHeight;
+		Dimension newSize = new Dimension(screenWidth, screenHeight);
+		setSize(newSize);
+		setPreferredSize(newSize);
+		ibuff = (BufferedImage)(this.createImage(screenWidth, screenHeight));
+		gbuff = ibuff.getGraphics();
+		// TODO cleanup constructor
 	}
 
 	public void startRunning() {

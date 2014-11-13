@@ -3,6 +3,8 @@ package ctia.game.scene;
 import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -19,8 +21,6 @@ import ctia.engine.entity.Player;
 import ctia.engine.sgui.SGuiScene;
 import ctia.game.TestBoss;
 import ctia.game.entity.Hero;
-import ctia.game.entity.SpawnPoint;
-import ctia.game.entity.TestEnemy;
 
 @SuppressWarnings("serial")
 public class BattleScene extends SGuiScene implements KeyListener, MouseListener {
@@ -36,9 +36,24 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 	public void begin() {
 		initGame();
 		this.startRunning();
+		resizeGameWithWindow();
 	}
 	public static BattleScene makeInstance() {
 		return new BattleScene();
+	}
+	private void resizeGameWithWindow() {
+		getFrame().addComponentListener(new ComponentListener() {
+		    public void componentResized(ComponentEvent e) {
+		    	updateSize(getWidth(), getHeight());
+		    }
+
+			@Override
+			public void componentHidden(ComponentEvent arg0) { }
+			@Override
+			public void componentMoved(ComponentEvent arg0) { }
+			@Override
+			public void componentShown(ComponentEvent arg0) { }
+		});
 	}
 
 	protected void initGame() { // call after being added to a JFrame
@@ -58,6 +73,7 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 
 	public void dt() { // check lose condition and tick
 		if (playerFiring) {
+//			updateSize(screenWidth + 1, screenHeight + 1);
 			Point p = MouseInfo.getPointerInfo().getLocation();
 			SwingUtilities.convertPointFromScreen(p, this);
 			p.x = (int) (p.x + level.getXscroll());
