@@ -30,7 +30,7 @@ public class TestBoss extends Enemy {
 		time++;
 		time %= 100;
 		
-		int bullets = 5;
+		int bullets = 20;
 		
 		if (time % 10 == 0) {
 
