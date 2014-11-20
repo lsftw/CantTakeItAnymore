@@ -1,0 +1,1 @@
+java -cp bin ctia.game.runner.CTIASwingRunner
