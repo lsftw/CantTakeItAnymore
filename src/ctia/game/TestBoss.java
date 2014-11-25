@@ -39,16 +39,8 @@ public class TestBoss extends Enemy {
 			for (int i = 0; i < bullets; i++)
 			{
 				Projectile b;
-				double offset = Math.random() * Math.PI / 36 * (double) (i - bullets / 2);
-				if (Math.random() < 0.5)
-				{
-					b = new Bullet(this, angle + offset);
-					
-				}
-				else
-				{
-					b = new PiercingBullet(this, angle + offset);
-				}
+				double offset = Math.random() * Math.PI / 6 * (double) (i - bullets / 2) / bullets;
+				b = new PiercingBullet(this, angle + offset);
 				container.addEntity(b);
 			}
 			
@@ -60,7 +52,7 @@ public class TestBoss extends Enemy {
 	@Override
 	public void resetStats() {
 		// TODO Auto-generated method stub
-		health = 100000;
+		health = 10000;
 	}
 
 }
