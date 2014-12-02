@@ -16,6 +16,8 @@ public abstract class Player extends Being implements KeyListener {
 	protected int fireCooldown = 0;
 	// Movement
 	protected double moveSpeed = 5;
+	// Buffs
+	protected int damageBoost = 0;
 	// Controls - Constants
 	public enum Action {MOVE_UP, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT};
 	public static final int[] DEFAULT_KEYS = {KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT};
@@ -110,11 +112,18 @@ public abstract class Player extends Being implements KeyListener {
 	protected void moved() { } // Called whenever player tries to move
 	public void tryToFire(Point p) {
 		if (fireCooldown <= 0) {
-			fireProjectile(p);
+			Projectile[] projectiles = makeProjectiles(p);
+			for (Projectile projectile : projectiles) {
+				projectile.boostDmg(damageBoost);
+				container.addEntity(projectile);
+			}
 			fireCooldown = fireDelay;
 		}
 	}
-	public abstract void fireProjectile(Point p);
+	public Projectile[] makeProjectiles(Point p) {
+		return new Projectile[]{makeProjectile(p)};
+	}
+	public abstract Projectile makeProjectile(Point p);
 
 	public void addScore(long points) { score += points; }
 	public void setScore(long points) { score = points; }

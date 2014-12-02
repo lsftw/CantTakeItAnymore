@@ -30,10 +30,10 @@ public class Hero extends Player {
 	}
 
 	@Override
-	public void fireProjectile(Point p) {
+	public Projectile makeProjectile(Point p) {
 		double angle = Math.atan2(p.y - (this.py + this.sy / 2), p.x - (this.px + this.sx / 2));
 		Projectile bullet = new Bullet(this, angle);
-		container.addEntity(bullet);
+		return bullet;
 	}
 
 	public void draw(Graphics g) {
@@ -51,8 +51,14 @@ public class Hero extends Player {
 			beginX = beginX - diff;
 		}
 		g.setColor(Color.BLUE);
-		g.drawString("HP: " + health, beginX, beginY + sy / 3);
-		g.drawString("X: " + px, beginX, beginY + sy * 2 / 3);
-		g.drawString("Y: " + py, beginX, beginY + sy);
+		String[] toDisplay = {
+				"HP: " + health,
+				"ATK: " + fireDelay,
+				"xDMG: " + damageBoost,
+				"MOVE: " + moveSpeed
+		};
+		for (int i = 0; i < toDisplay.length; i++) {
+			g.drawString(toDisplay[i], beginX, beginY + sy * (i+1) / toDisplay.length);
+		}
 	}
 }
