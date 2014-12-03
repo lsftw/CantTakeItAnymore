@@ -1,5 +1,6 @@
 package ctia.game.scene;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -69,6 +70,28 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 
 	protected void drawGui(Graphics g) {
 		level.draw(g);
+		drawHud(g);
+	}
+
+	protected void drawHud(Graphics g) {
+		drawBossHealth(g);
+	}
+	private void drawBossHealth(Graphics g) {
+		TestBoss boss = level.getABoss();
+		if (boss != null) {
+			int health = boss.getHealth();
+			int maxHealth = boss.getMaxHealth();
+			double healthPercentage = health * 1.0 / maxHealth;
+			int maxHealthWidth = Settings.getWindowWidth();
+			int healthWidth = (int) (maxHealthWidth * healthPercentage);
+			int healthBarHeight = 30;
+			g.setColor(Color.RED);
+			g.fillRect(0, 0, maxHealthWidth, healthBarHeight);
+			g.setColor(Color.GREEN);
+			g.fillRect(0, 0, healthWidth, healthBarHeight);
+			g.setColor(Color.WHITE);
+			g.drawString(health + " / " + maxHealth, Settings.getWindowWidth() / 2, healthBarHeight / 2);
+		}
 	}
 
 	public void dt() { // check lose condition and tick

@@ -9,10 +9,12 @@ public abstract class Enemy extends Being {
 	protected long scoreValue = 0;
 
 	protected double maxSpeed = 1000000;
+	protected int maxHealth;
 
 	public Enemy(Level container, double xpos, double ypos) {
 		super(container, xpos, ypos);
 		resetStats();
+		maxHealth = health;
 	}
 	public abstract void resetStats(); // set movespeed and health here
 
@@ -56,4 +58,10 @@ public abstract class Enemy extends Being {
 		awardAttacker(scoreValue);
 	}
 	public void addScore(long points) { scoreValue += points; } // friendly fired!
+	public int getMaxHealth() {
+		return maxHealth;
+	}
+	public void setMaxHealth(int maxHealth) {
+		this.maxHealth = maxHealth;
+	}
 }
