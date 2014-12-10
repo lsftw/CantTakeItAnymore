@@ -10,7 +10,7 @@ import ctia.engine.entity.Being;
 import ctia.engine.entity.Enemy;
 import ctia.engine.entity.Player;
 import ctia.engine.entity.Projectile;
-import ctia.game.TestBoss;
+import ctia.game.entity.enemy.TestBoss;
 
 public class Level {
 	// Lists of Entities

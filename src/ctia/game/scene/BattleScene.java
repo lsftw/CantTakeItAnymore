@@ -20,8 +20,8 @@ import ctia.engine.core.Level;
 import ctia.engine.data.Settings;
 import ctia.engine.entity.Player;
 import ctia.engine.sgui.SGuiScene;
-import ctia.game.TestBoss;
 import ctia.game.entity.Hero;
+import ctia.game.entity.enemy.TestBoss;
 
 @SuppressWarnings("serial")
 public class BattleScene extends SGuiScene implements KeyListener, MouseListener {

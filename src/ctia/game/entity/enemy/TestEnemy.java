@@ -1,15 +1,11 @@
-package ctia.game;
+package ctia.game.entity.enemy;
 
 import ctia.engine.core.Level;
 import ctia.engine.entity.Enemy;
 import ctia.engine.entity.Projectile;
 import ctia.game.entity.projectile.PiercingBullet;
 
-public class TestBoss extends Enemy {
-	
-	public TestBoss(Level container, double xpos, double ypos) {
-		super(container, xpos, ypos);
-	}
+public class TestEnemy extends Enemy {
 
 	private int time;
 
@@ -22,34 +18,33 @@ public class TestBoss extends Enemy {
 		double dy = ppy - py;
 		double distance = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
 
-		vx = dx / distance * 1.0;
-		vy = dy / distance * 1.0;
+		vx = dx / distance * 3.0;
+		vy = dy / distance * 3.0;
 
 		time++;
 		time %= 100;
-		
-		int bullets = 20;
 		
 		if (time % 10 == 0) {
 
 			double angle = Math.atan2(ppy - (this.py + this.sy / 2), ppx
 					- (this.px + this.sx / 2));
-			for (int i = 0; i < bullets; i++)
-			{
-				Projectile b;
-				double offset = Math.random() * Math.PI / 6 * (double) (i - bullets / 2) / bullets;
-				b = new PiercingBullet(this, angle + offset);
-				container.addEntity(b);
-			}
-			
+			Projectile bullet = new PiercingBullet(this, angle);
+			container.addEntity(bullet);
 		}
 
 		super.preDt();
 	}
 
+	public TestEnemy(Level container, double xpos, double ypos) {
+		super(container, xpos, ypos);
+		time = 0;
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void resetStats() {
 		// TODO Auto-generated method stub
-		health = 10000;
+		health = 100;
 	}
+
 }

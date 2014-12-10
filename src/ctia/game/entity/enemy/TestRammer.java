@@ -1,4 +1,4 @@
-package ctia.game.entity;
+package ctia.game.entity.enemy;
 
 import ctia.engine.core.Level;
 import ctia.engine.entity.Enemy;
