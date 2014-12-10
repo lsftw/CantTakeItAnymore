@@ -19,14 +19,17 @@ res/player/hero.png
 
 // enemies
 
-Enemy
-res/player/testenemy.png
+SpawnPoint
+res/enemy/spawner.png
+
+Shooter
+res/enemy/shooter.png
 
 Rammer
-res/player/rammer.png
+res/enemy/rammer.png
 
 Boss
-res/player/testboss.png
+res/enemy/boss.png
 
 // projectiles
 
@@ -37,9 +40,6 @@ PiercingBullet
 res/bullets/bullet1.png
 
 // misc
-
-SpawnPoint
-res/player/spawner.png
 
 DamagePowerup
 res/bullets/bullet0.png
