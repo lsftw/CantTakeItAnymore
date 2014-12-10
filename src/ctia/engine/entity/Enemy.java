@@ -5,6 +5,7 @@ import ctia.engine.core.Level;
 import ctia.engine.data.Settings;
 import ctia.engine.data.Utility;
 import ctia.game.entity.powerup.DamagePowerup;
+import ctia.game.entity.powerup.HealthPowerup;
 import ctia.game.entity.powerup.Powerup;
 
 public abstract class Enemy extends Being {
@@ -16,6 +17,7 @@ public abstract class Enemy extends Being {
 
 	protected double itemDropChance = 25;
 	protected int maxItemsDropped = 1;
+	protected int maxHealthDropped = 1;
 
 	public Enemy(Level container, double xpos, double ypos) {
 		super(container, xpos, ypos);
@@ -78,11 +80,22 @@ public abstract class Enemy extends Being {
 	}
 	public void addScore(long points) { scoreValue += points; }
 	protected void dropItems() {
+		int itemsDropped = 0;
 		for (int i = 0; i < maxItemsDropped; i++) {
 			if (percentChance(itemDropChance)) {
 				dropPowerup();
+				itemsDropped++;
 			}
 		}
+		for (int i = 0; i < maxHealthDropped; i++) {
+			if (percentChance(itemDropChance)) {
+				dropHeal();
+			}
+		}
+	}
+	private void dropHeal() {
+		Powerup powerup = new HealthPowerup(container, px + sx / 2, py + sy / 2);
+		container.addEntity(powerup);
 	}
 	private void dropPowerup() {
 		Powerup powerup = getRandomItem();

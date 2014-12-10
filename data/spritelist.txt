@@ -42,4 +42,7 @@ res/bullets/bullet1.png
 // misc
 
 DamagePowerup
-res/bullets/bullet0.png
+res/powerup/damage.png
+
+HealthPowerup
+res/powerup/health.png

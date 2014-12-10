@@ -8,7 +8,8 @@ public class SpawnPoint extends Enemy {
 
 	public SpawnPoint(Level container, double xpos, double ypos) {
 		super(container, xpos, ypos);
-		// TODO Auto-generated constructor stub
+		maxItemsDropped = 5;
+		maxHealthDropped = 5;
 	}
 
 	@Override
