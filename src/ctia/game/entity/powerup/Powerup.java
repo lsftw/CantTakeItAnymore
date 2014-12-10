@@ -10,6 +10,7 @@ public abstract class Powerup extends Entity {
 	}
 
 	public void postDt() {
+		super.postDt();
 		Player player = container.getAPlayer();
 		if (player != null && this.collidesWith(player)) {
 			buffPlayer(player);
