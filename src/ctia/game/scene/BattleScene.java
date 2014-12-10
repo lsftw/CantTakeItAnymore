@@ -74,24 +74,37 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 	}
 
 	protected void drawHud(Graphics g) {
+		drawPlayerHealth(g);
 		drawBossHealth(g);
+	}
+	private void drawPlayerHealth(Graphics g) {
+		Player player = level.getAPlayer();
+		int healthBarHeight = 30;
+		if (player != null) {
+			int health = player.getHealth();
+			int maxHealth = player.getBaseHealth();
+			drawHealth(g, "Player", health, maxHealth, 0, Settings.getWindowHeight() - healthBarHeight);
+		}
 	}
 	private void drawBossHealth(Graphics g) {
 		TestBoss boss = level.getABoss();
 		if (boss != null) {
 			int health = boss.getHealth();
 			int maxHealth = boss.getMaxHealth();
-			double healthPercentage = health * 1.0 / maxHealth;
-			int maxHealthWidth = Settings.getWindowWidth();
-			int healthWidth = (int) (maxHealthWidth * healthPercentage);
-			int healthBarHeight = 30;
-			g.setColor(Color.RED);
-			g.fillRect(0, 0, maxHealthWidth, healthBarHeight);
-			g.setColor(Color.GREEN);
-			g.fillRect(0, 0, healthWidth, healthBarHeight);
-			g.setColor(Color.WHITE);
-			g.drawString(health + " / " + maxHealth, Settings.getWindowWidth() / 2, healthBarHeight / 2);
+			drawHealth(g, "Boss", health, maxHealth, 0, 0);
 		}
+	}
+	private void drawHealth(Graphics g, String name, int health, int maxHealth, int x, int y) {
+		double healthPercentage = health * 1.0 / maxHealth;
+		int maxHealthWidth = Settings.getWindowWidth();
+		int healthWidth = (int) (maxHealthWidth * healthPercentage);
+		int healthBarHeight = 30;
+		g.setColor(Color.RED);
+		g.fillRect(x, y, maxHealthWidth, healthBarHeight);
+		g.setColor(Color.GREEN);
+		g.fillRect(x, y, healthWidth, healthBarHeight);
+		g.setColor(Color.WHITE);
+		g.drawString(name + ": " + health + " / " + maxHealth, Settings.getWindowWidth() / 2, y + healthBarHeight / 2);
 	}
 
 	public void dt() { // check lose condition and tick

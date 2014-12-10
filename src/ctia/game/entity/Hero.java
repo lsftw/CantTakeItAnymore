@@ -52,7 +52,6 @@ public class Hero extends Player {
 		}
 		g.setColor(Color.BLUE);
 		String[] toDisplay = {
-				"HP: " + health,
 				"ATK: " + fireDelay,
 				"xDMG: " + damageBoost,
 				"MOVE: " + moveSpeed
