@@ -124,6 +124,9 @@ public abstract class Player extends Being implements KeyListener {
 		return new Projectile[]{makeProjectile(p)};
 	}
 	public abstract Projectile makeProjectile(Point p);
+	public void addDamageBoost(int damageBoost) {
+		this.damageBoost += damageBoost;
+	}
 
 	public void addScore(long points) { score += points; }
 	public void setScore(long points) { score = points; }

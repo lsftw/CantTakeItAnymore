@@ -158,6 +158,10 @@ public abstract class Entity {
 		return container.hasEntity(this);
 	}
 
+	public boolean percentChance(double chance) {
+		return rand.nextDouble() * 100 < chance;
+	}
+
 	public double angleBetween(double otherX, double otherY) {
 		double thisX = px + sx/2;
 		double thisY = py + sy/2;

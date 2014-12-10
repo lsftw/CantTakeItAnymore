@@ -3,14 +3,12 @@ package ctia.game;
 import ctia.engine.core.Level;
 import ctia.engine.entity.Enemy;
 import ctia.engine.entity.Projectile;
-import ctia.game.entity.projectile.Bullet;
 import ctia.game.entity.projectile.PiercingBullet;
 
 public class TestBoss extends Enemy {
 	
 	public TestBoss(Level container, double xpos, double ypos) {
 		super(container, xpos, ypos);
-		// TODO Auto-generated constructor stub
 	}
 
 	private int time;
@@ -54,5 +52,4 @@ public class TestBoss extends Enemy {
 		// TODO Auto-generated method stub
 		health = 10000;
 	}
-
 }

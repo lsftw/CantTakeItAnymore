@@ -3,6 +3,9 @@ package ctia.engine.entity;
 import ctia.engine.core.Entity;
 import ctia.engine.core.Level;
 import ctia.engine.data.Settings;
+import ctia.engine.data.Utility;
+import ctia.game.entity.powerup.DamagePowerup;
+import ctia.game.entity.powerup.Powerup;
 
 public abstract class Enemy extends Being {
 	protected Entity lastAttacker;
@@ -10,6 +13,9 @@ public abstract class Enemy extends Being {
 
 	protected double maxSpeed = 1000000;
 	protected int maxHealth;
+
+	protected double itemDropChance = 25;
+	protected int maxItemsDropped = 1;
 
 	public Enemy(Level container, double xpos, double ypos) {
 		super(container, xpos, ypos);
@@ -56,8 +62,34 @@ public abstract class Enemy extends Being {
 	}
 	protected void destructionTrigger() {
 		awardAttacker(scoreValue);
+		dropItems();
 	}
-	public void addScore(long points) { scoreValue += points; } // friendly fired!
+	public void addScore(long points) { scoreValue += points; }
+	protected void dropItems() {
+		for (int i = 0; i < maxItemsDropped; i++) {
+			if (percentChance(itemDropChance)) {
+				dropPowerup();
+			}
+		}
+	}
+	private void dropPowerup() {
+		Powerup powerup = getRandomItem();
+		container.addEntity(powerup);
+	}
+	protected Powerup getRandomItem() {
+		int powerupType = rand.nextInt(1);
+		Powerup powerup = null;
+		switch (powerupType) {
+		case 0:
+			powerup = new DamagePowerup(container, px + sx / 2, py + sy / 2);
+			break;
+		default:
+			Utility.warn("No powerup found for type #: " + powerupType);
+			break;
+		}
+		return powerup;
+	}
+
 	public int getMaxHealth() {
 		return maxHealth;
 	}

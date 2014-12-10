@@ -33,3 +33,5 @@ res/bullets/bullet1.png
 SpawnPoint
 res/player/spawner.png
 
+DamagePowerup
+res/bullets/bullet0.png
