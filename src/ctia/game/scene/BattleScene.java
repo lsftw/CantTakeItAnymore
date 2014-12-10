@@ -30,6 +30,9 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 	private Player player;
 	private boolean playerFiring = false;
 
+	private double timeUntilBossSeconds = Settings.getTimeToBossSpawn();
+	private boolean bossSpawned = false;
+
 	private BattleScene() {
 		super(Settings.getWindowWidth(), Settings.getWindowHeight());
 		capFps(Settings.getFps());
@@ -62,10 +65,8 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 		getFrame().addKeyListener(player);
 		level.addEntity(player);
 		level.follow(player);
-		Entity boss = new TestBoss(level, 400, 400);
-		level.addEntity(boss);
-		/*Entity enemy = new SpawnPoint(level, 400, 400);
-		level.addEntity(enemy);*/
+//		Entity enemy = new SpawnPoint(level, 400, 400);
+//		level.addEntity(enemy);
 	}
 
 	protected void drawGui(Graphics g) {
@@ -74,12 +75,31 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 	}
 
 	protected void drawHud(Graphics g) {
+		drawBossCountdown(g);
 		drawPlayerHealth(g);
 		drawBossHealth(g);
 	}
+	private void drawBossCountdown(Graphics g) {
+		TestBoss boss = level.getABoss();
+		if (boss == null) {
+			// TODO genericize to drawBar() alongside healthbar?
+			int countDownBarHeight = Settings.getHealthBarHeight();
+			int maxHealthWidth = Settings.getWindowWidth();
+			double health = timeUntilBossSeconds;
+			int maxHealth = Settings.getTimeToBossSpawn();
+			double healthPercentage = health / maxHealth;
+			int healthWidth = (int) (maxHealthWidth * healthPercentage);
+			g.setColor(Color.BLACK);
+			g.fillRect(0, 0, maxHealthWidth, countDownBarHeight);
+			g.setColor(Color.GRAY);
+			g.fillRect(0, 0, healthWidth, countDownBarHeight);
+			g.setColor(Color.WHITE);
+			g.drawString("Boss spawns in " + Math.round(health) + " seconds ", Settings.getWindowWidth() / 2, 0 + countDownBarHeight / 2);
+		}
+	}
 	private void drawPlayerHealth(Graphics g) {
 		Player player = level.getAPlayer();
-		int healthBarHeight = 30;
+		int healthBarHeight = Settings.getHealthBarHeight();
 		if (player != null) {
 			int health = player.getHealth();
 			int maxHealth = player.getBaseHealth();
@@ -98,7 +118,7 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 		double healthPercentage = health * 1.0 / maxHealth;
 		int maxHealthWidth = Settings.getWindowWidth();
 		int healthWidth = (int) (maxHealthWidth * healthPercentage);
-		int healthBarHeight = 30;
+		int healthBarHeight = Settings.getHealthBarHeight();
 		g.setColor(Color.RED);
 		g.fillRect(x, y, maxHealthWidth, healthBarHeight);
 		g.setColor(Color.GREEN);
@@ -108,6 +128,12 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 	}
 
 	public void dt() { // check lose condition and tick
+		handlePlayerFire();
+		countDown();
+		level.dt();
+		// TODO spawn enemies/spawnpoints near enemy?
+	}
+	private void handlePlayerFire() {
 		if (playerFiring) {
 //			updateSize(screenWidth + 1, screenHeight + 1);
 			Point p = MouseInfo.getPointerInfo().getLocation();
@@ -116,7 +142,22 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 			p.y = (int) (p.y + level.getYscroll());
 			player.tryToFire(p);
 		}
-		level.dt();
+	}
+	private void countDown() {
+		if (timeUntilBossSeconds > 0) {
+			double secondsPerFrame = 1.0 / Settings.getFps();
+			timeUntilBossSeconds -= secondsPerFrame;
+		} else {
+			timeUntilBossSeconds = 0;
+			if (!bossSpawned) {
+				// TODO spawn near player
+				double px = 400;
+				double py = 400;
+				Entity boss = new TestBoss(level, px, py);
+				level.addEntity(boss);
+				bossSpawned = true;
+			}
+		}
 	}
 
 	public void keyPressed(KeyEvent ke) {

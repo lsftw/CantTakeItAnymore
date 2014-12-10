@@ -11,7 +11,12 @@ public class Settings {
 	private static final String IMAGE_LIST = "data/imagelist.txt";
 	private static final String SPRITE_LIST = "data/spritelist.txt";
 
+	private static final int HEALTHBAR_HEIGHT = 30;
+
+	// gameplay
 	private static final boolean ENEMY_FRIENDLY_FIRE_ENABLED = false;
+	private static final int BOSS_SPAWN_TIME_SECONDS = 3;
+
 
 	public static int getWindowWidth() {
 		return WINDOW_WIDTH;
@@ -42,10 +47,17 @@ public class Settings {
 		return SPRITE_LIST;
 	}
 
+	public static int getHealthBarHeight() {
+		return HEALTHBAR_HEIGHT;
+	}
+
 	public static boolean isEnemyFriendlyFireEnabled() {
 		return ENEMY_FRIENDLY_FIRE_ENABLED;
 	}
 	public static Image getBackground() {
 		return Art.getImage("background");
+	}
+	public static int getTimeToBossSpawn() {
+		return BOSS_SPAWN_TIME_SECONDS;
 	}
 }
