@@ -15,8 +15,8 @@ public class Settings {
 
 	// gameplay
 	private static final boolean ENEMY_FRIENDLY_FIRE_ENABLED = false;
-	private static final int BOSS_SPAWN_TIME_SECONDS = 3;
-
+	private static final int BOSS_SPAWN_TIME_SECONDS = 120;
+	private static final double SPAWN_CHANCE_PER_FRAME = 1.0 / FPS; // out of 100
 
 	public static int getWindowWidth() {
 		return WINDOW_WIDTH;
@@ -59,5 +59,8 @@ public class Settings {
 	}
 	public static int getTimeToBossSpawn() {
 		return BOSS_SPAWN_TIME_SECONDS;
+	}
+	public static double getSpawnChancePerFrame() {
+		return SPAWN_CHANCE_PER_FRAME;
 	}
 }

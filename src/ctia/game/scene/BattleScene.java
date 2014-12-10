@@ -22,6 +22,7 @@ import ctia.engine.entity.Player;
 import ctia.engine.sgui.SGuiScene;
 import ctia.game.entity.Hero;
 import ctia.game.entity.enemy.Boss;
+import ctia.game.entity.enemy.SpawnPoint;
 
 @SuppressWarnings("serial")
 public class BattleScene extends SGuiScene implements KeyListener, MouseListener {
@@ -61,12 +62,14 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 	}
 
 	protected void initGame() { // call after being added to a JFrame
+		// player
 		player = new Hero(level, 0, 0);
 		getFrame().addKeyListener(player);
 		level.addEntity(player);
 		level.follow(player);
-//		Entity enemy = new SpawnPoint(level, 400, 400);
-//		level.addEntity(enemy);
+		// enemy
+		level.dt(); // level actually adds player entity
+		spawnSpawner();
 	}
 
 	protected void drawGui(Graphics g) {
@@ -131,7 +134,6 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 		handlePlayerFire();
 		countDown();
 		level.dt();
-		// TODO spawn enemies/spawnpoints near enemy?
 	}
 	private void handlePlayerFire() {
 		if (playerFiring) {
@@ -147,17 +149,46 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 		if (timeUntilBossSeconds > 0) {
 			double secondsPerFrame = 1.0 / Settings.getFps();
 			timeUntilBossSeconds -= secondsPerFrame;
+			trySpawnEnemies();
 		} else {
 			timeUntilBossSeconds = 0;
 			if (!bossSpawned) {
-				// TODO spawn near player
-				double px = 400;
-				double py = 400;
+				Point location = getRandomPointNearPlayer();
+				int px = location.x;
+				int py = location.y;
 				Entity boss = new Boss(level, px, py);
 				level.addEntity(boss);
 				bossSpawned = true;
 			}
 		}
+	}
+	private void trySpawnEnemies() {
+		double spawnChance = Settings.getSpawnChancePerFrame();
+		if (rand.nextDouble() * 100 < spawnChance) {
+			spawnSpawner();
+		}
+	}
+	private void spawnSpawner() {
+		Point location = getRandomPointNearPlayer();
+		if (location != null) {
+			int px = location.x;
+			int py = location.y;
+			Entity enemy = new SpawnPoint(level, px, py);
+			level.addEntity(enemy);
+		}
+	}
+	private Point getRandomPointNearPlayer() {
+		Player player = level.getAPlayer();
+		if (player != null) {
+			double playerCenterX = player.getPx() + player.getSx() / 2;
+			double playerCenterY = player.getPy() + player.getSy() / 2;
+			double randAngle = rand.nextDouble() * (2 * Math.PI);
+			double distanceFromPlayer = Math.max(Settings.getWindowWidth(), Settings.getWindowHeight()); // pick offscreen point
+			int px = (int) (playerCenterX + Math.cos(randAngle) * distanceFromPlayer);
+			int py = (int) (playerCenterY + Math.sin(randAngle) * distanceFromPlayer);
+			return new Point(px, py);
+		}
+		return null;
 	}
 
 	public void keyPressed(KeyEvent ke) {
