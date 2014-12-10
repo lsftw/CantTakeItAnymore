@@ -21,7 +21,7 @@ import ctia.engine.data.Settings;
 import ctia.engine.entity.Player;
 import ctia.engine.sgui.SGuiScene;
 import ctia.game.entity.Hero;
-import ctia.game.entity.enemy.TestBoss;
+import ctia.game.entity.enemy.Boss;
 
 @SuppressWarnings("serial")
 public class BattleScene extends SGuiScene implements KeyListener, MouseListener {
@@ -80,7 +80,7 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 		drawBossHealth(g);
 	}
 	private void drawBossCountdown(Graphics g) {
-		TestBoss boss = level.getABoss();
+		Boss boss = level.getABoss();
 		if (boss == null) {
 			// TODO genericize to drawBar() alongside healthbar?
 			int countDownBarHeight = Settings.getHealthBarHeight();
@@ -107,7 +107,7 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 		}
 	}
 	private void drawBossHealth(Graphics g) {
-		TestBoss boss = level.getABoss();
+		Boss boss = level.getABoss();
 		if (boss != null) {
 			int health = boss.getHealth();
 			int maxHealth = boss.getMaxHealth();
@@ -153,7 +153,7 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 				// TODO spawn near player
 				double px = 400;
 				double py = 400;
-				Entity boss = new TestBoss(level, px, py);
+				Entity boss = new Boss(level, px, py);
 				level.addEntity(boss);
 				bossSpawned = true;
 			}

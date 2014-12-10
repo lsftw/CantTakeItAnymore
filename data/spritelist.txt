@@ -12,23 +12,31 @@
 .noimage
 res/noimage.png
 
+// player
+
 Hero
 res/player/hero.png
 
-TestEnemy
+// enemies
+
+Enemy
 res/player/testenemy.png
 
-TestRammer
+Rammer
 res/player/rammer.png
 
-TestBoss
+Boss
 res/player/testboss.png
+
+// projectiles
 
 Bullet
 res/bullets/bullet0.png
 
 PiercingBullet
 res/bullets/bullet1.png
+
+// misc
 
 SpawnPoint
 res/player/spawner.png

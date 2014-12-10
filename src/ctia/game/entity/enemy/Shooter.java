@@ -5,26 +5,21 @@ import ctia.engine.entity.Enemy;
 import ctia.engine.entity.Projectile;
 import ctia.game.entity.projectile.PiercingBullet;
 
-public class TestEnemy extends Enemy {
+public class Shooter extends Enemy {
 
-	private int time;
+	private int fireTime;
 
 	@Override
 	public void preDt() {
+		chasePlayer(3.0);
+
 		double ppx = container.getAPlayer().getPx();
 		double ppy = container.getAPlayer().getPy();
-		
-		double dx = ppx - px;
-		double dy = ppy - py;
-		double distance = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
 
-		vx = dx / distance * 3.0;
-		vy = dy / distance * 3.0;
-
-		time++;
-		time %= 100;
+		fireTime++;
+		fireTime %= 100;
 		
-		if (time % 10 == 0) {
+		if (fireTime % 10 == 0) {
 
 			double angle = Math.atan2(ppy - (this.py + this.sy / 2), ppx
 					- (this.px + this.sx / 2));
@@ -35,9 +30,9 @@ public class TestEnemy extends Enemy {
 		super.preDt();
 	}
 
-	public TestEnemy(Level container, double xpos, double ypos) {
+	public Shooter(Level container, double xpos, double ypos) {
 		super(container, xpos, ypos);
-		time = 0;
+		fireTime = 0;
 		// TODO Auto-generated constructor stub
 	}
 

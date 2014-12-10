@@ -6,33 +6,21 @@ import ctia.engine.entity.Player;
 import ctia.engine.entity.Projectile;
 import ctia.game.entity.projectile.PiercingBullet;
 
-public class TestBoss extends Enemy {
+public class Boss extends Enemy {
 
 	private int fireTime;
 	private double maxSpeed = 1.0;
 
-	public TestBoss(Level container, double xpos, double ypos) {
+	public Boss(Level container, double xpos, double ypos) {
 		super(container, xpos, ypos);
 	}
 
 	@Override
 	public void preDt() {
-		chasePlayer();
+		chasePlayer(maxSpeed);
 		tryFire();
 
 		super.preDt();
-	}
-
-	private void chasePlayer() {
-		Player player = container.getAPlayer();
-		double ppx = player.getPx();
-		double ppy = player.getPy();
-		double dx = ppx - px;
-		double dy = ppy - py;
-		double distance = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-
-		vx = dx / distance * maxSpeed;
-		vy = dy / distance * maxSpeed;
 	}
 
 	private void tryFire() {

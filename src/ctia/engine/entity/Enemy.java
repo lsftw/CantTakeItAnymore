@@ -42,6 +42,18 @@ public abstract class Enemy extends Being {
 		}
 	}
 
+	protected void chasePlayer(double speed) {
+		Player player = container.getAPlayer();
+		double ppx = player.getPx();
+		double ppy = player.getPy();
+		double dx = ppx - px;
+		double dy = ppy - py;
+		double distance = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+
+		vx = dx / distance * speed;
+		vy = dy / distance * speed;
+	}
+
 	protected void hit(Being collided) { // collide with another entity, damaging both entities
 		this.hitBy(collided, this.collisionDamage);
 		collided.hitBy(this, collided.getCollisionDamage());

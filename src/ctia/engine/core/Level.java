@@ -10,7 +10,7 @@ import ctia.engine.entity.Being;
 import ctia.engine.entity.Enemy;
 import ctia.engine.entity.Player;
 import ctia.engine.entity.Projectile;
-import ctia.game.entity.enemy.TestBoss;
+import ctia.game.entity.enemy.Boss;
 
 public class Level {
 	// Lists of Entities
@@ -46,12 +46,12 @@ public class Level {
 		}
 		return null;
 	}
-	public TestBoss getABoss() { // used for boss health display
+	public Boss getABoss() { // used for boss health display
 		Entity entity;
 		for (int i = 0; i < entities.size(); i++) {
 			entity = entities.get(i);
-			if (entity instanceof TestBoss) {
-				return (TestBoss)entity;
+			if (entity instanceof Boss) {
+				return (Boss)entity;
 			}
 		}
 		return null;
