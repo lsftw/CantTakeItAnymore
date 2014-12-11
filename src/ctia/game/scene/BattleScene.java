@@ -159,6 +159,11 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 				Entity boss = new Boss(level, px, py);
 				level.addEntity(boss);
 				bossSpawned = true;
+			} else if (bossSpawned && level.getABoss() == null) { // boss dead
+				for (int i = 0; i < 5; i++) {
+					trySpawnEnemies();
+				}
+				timeUntilBossSeconds = Settings.getTimeToBossSpawn() / 5; // spawn next one
 			}
 		}
 	}
