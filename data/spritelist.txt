@@ -36,6 +36,9 @@ res/enemy/boss.png
 Bullet
 res/bullets/bullet0.png
 
+PlayerBullet
+res/bullets/bullet1.png
+
 PiercingBullet
 res/bullets/bullet1.png
 

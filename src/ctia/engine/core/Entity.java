@@ -7,6 +7,7 @@ import java.util.Random;
 
 import ctia.engine.data.Utility;
 import ctia.engine.data.art.Art;
+import ctia.engine.entity.Player;
 
 // represents a game entity with position and image
 public abstract class Entity {
@@ -124,6 +125,11 @@ public abstract class Entity {
 		if (vx != 0 || vy != 0) { // don't change angle when staying still
 			angle = Math.atan2(vy, vx);
 		}
+	}
+	public double getDistanceTo(Entity other) {
+		double dx = px - other.px;
+		double dy = py - other.py;
+		return Math.sqrt(dx * dx + dy * dy);
 	}
 
 	public boolean collidesWith(Entity other) { // rectangle collision check

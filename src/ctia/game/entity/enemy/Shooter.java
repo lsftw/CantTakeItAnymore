@@ -2,8 +2,9 @@ package ctia.game.entity.enemy;
 
 import ctia.engine.core.Level;
 import ctia.engine.entity.Enemy;
+import ctia.engine.entity.Player;
 import ctia.engine.entity.Projectile;
-import ctia.game.entity.projectile.PiercingBullet;
+import ctia.game.entity.projectile.Bullet;
 
 public class Shooter extends Enemy {
 
@@ -13,18 +14,25 @@ public class Shooter extends Enemy {
 	public void preDt() {
 		chasePlayer(3.0);
 
-		double ppx = container.getAPlayer().getPx();
-		double ppy = container.getAPlayer().getPy();
+		Player player = container.getAPlayer();
+		double ppx = player.getPx();
+		double ppy = player.getPy();
 
-		fireTime++;
-		fireTime %= 100;
-		
-		if (fireTime % 10 == 0) {
+		double dist = this.getDistanceTo(player);
+//		double maxFireDist = Math.max(Settings.getWindowWidth(), Settings.getWindowHeight());
+		double maxFireDist = Double.MAX_VALUE; // disable max fire dist
 
-			double angle = Math.atan2(ppy - (this.py + this.sy / 2), ppx
-					- (this.px + this.sx / 2));
-			Projectile bullet = new PiercingBullet(this, angle);
-			container.addEntity(bullet);
+		if (dist < maxFireDist) {
+			fireTime++;
+			fireTime %= 100;
+			
+			if (fireTime % 10 == 0) {
+	
+				double angle = Math.atan2(ppy - (this.py + this.sy / 2), ppx
+						- (this.px + this.sx / 2));
+				Projectile bullet = new Bullet(this, angle);
+				container.addEntity(bullet);
+			}
 		}
 
 		super.preDt();
@@ -39,7 +47,7 @@ public class Shooter extends Enemy {
 	@Override
 	public void resetStats() {
 		// TODO Auto-generated method stub
-		health = 100;
+		health = 1000;
 	}
 
 }

@@ -8,12 +8,12 @@ import ctia.engine.core.Level;
 import ctia.engine.data.Settings;
 import ctia.engine.entity.Player;
 import ctia.engine.entity.Projectile;
-import ctia.game.entity.projectile.Bullet;
+import ctia.game.entity.projectile.PlayerBullet;
 
 public class Hero extends Player {
 	private static final int HEALTH = 10000;
 	private static final int FIRE_DELAY = Settings.getFps() / 10;
-	private static final int SPEED = 5;
+	private static final int SPEED = 7;
 
 	public Hero(Level container, double xpos, double ypos) {
 		super(container, xpos, ypos);
@@ -32,7 +32,7 @@ public class Hero extends Player {
 	@Override
 	public Projectile makeProjectile(Point p) {
 		double angle = Math.atan2(p.y - (this.py + this.sy / 2), p.x - (this.px + this.sx / 2));
-		Projectile bullet = new Bullet(this, angle);
+		Projectile bullet = new PlayerBullet(this, angle);
 		return bullet;
 	}
 

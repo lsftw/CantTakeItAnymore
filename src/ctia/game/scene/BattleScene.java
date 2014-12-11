@@ -69,7 +69,9 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 		level.follow(player);
 		// enemy
 		level.dt(); // level actually adds player entity
-		spawnSpawner();
+		for (int i = 0; i < 5; i++) {
+			spawnSpawner();
+		}
 	}
 
 	protected void drawGui(Graphics g) {

@@ -20,7 +20,7 @@ public class Rammer extends Enemy {
 	@Override
 	public void resetStats() {
 		// TODO Auto-generated method stub
-		health = 100;
+		health = 2000;
 	}
 
 }

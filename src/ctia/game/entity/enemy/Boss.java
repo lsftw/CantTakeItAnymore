@@ -4,7 +4,7 @@ import ctia.engine.core.Level;
 import ctia.engine.entity.Enemy;
 import ctia.engine.entity.Player;
 import ctia.engine.entity.Projectile;
-import ctia.game.entity.projectile.PiercingBullet;
+import ctia.game.entity.projectile.Bullet;
 
 public class Boss extends Enemy {
 
@@ -43,7 +43,7 @@ public class Boss extends Enemy {
 			{
 				Projectile b;
 				double offset = Math.random() * Math.PI / 6 * (double) (i - bullets / 2) / bullets;
-				b = new PiercingBullet(this, angle + offset);
+				b = new Bullet(this, angle + offset);
 				container.addEntity(b);
 			}
 			
@@ -53,6 +53,6 @@ public class Boss extends Enemy {
 	@Override
 	public void resetStats() {
 		// TODO Auto-generated method stub
-		health = 30000;
+		health = 300000;
 	}
 }

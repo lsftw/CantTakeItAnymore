@@ -9,6 +9,6 @@ public class DamagePowerup extends Powerup {
 	}
 
 	protected void buffPlayer(Player player) {
-		player.addDamageBoost(5);
+		player.addDamageBoost(1);
 	}
 }
