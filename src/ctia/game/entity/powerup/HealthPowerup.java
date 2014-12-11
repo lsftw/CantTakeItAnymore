@@ -10,8 +10,8 @@ public class HealthPowerup extends Powerup {
 	}
 
 	protected void buffPlayer(Player player) {
-		int healPercent = 5;
-		int newPlayerHealth = player.getHealth() + (player.getBaseHealth() / healPercent);
+		int healPercent = 10;
+		int newPlayerHealth = player.getHealth() + (player.getBaseHealth() * healPercent / 100);
 		player.setHealth(newPlayerHealth);
 	}
 }

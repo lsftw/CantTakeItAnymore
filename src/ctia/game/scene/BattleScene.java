@@ -97,7 +97,9 @@ public class BattleScene extends SGuiScene implements KeyListener, MouseListener
 			g.setColor(Color.GRAY);
 			g.fillRect(0, 0, healthWidth, countDownBarHeight);
 			g.setColor(Color.WHITE);
-			g.drawString("Boss spawns in " + Math.round(health) + " seconds ", Settings.getWindowWidth() / 2, 0 + countDownBarHeight / 2);
+			//String text = "Boss spawns in " + Math.round(health) + " seconds ";
+			String text = Math.round(health) + ""; // More ominous!
+			g.drawString(text, Settings.getWindowWidth() / 2, 0 + countDownBarHeight / 2);
 		}
 	}
 	private void drawPlayerHealth(Graphics g) {
