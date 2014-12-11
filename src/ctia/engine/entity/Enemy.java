@@ -80,11 +80,9 @@ public abstract class Enemy extends Being {
 	}
 	public void addScore(long points) { scoreValue += points; }
 	protected void dropItems() {
-		int itemsDropped = 0;
 		for (int i = 0; i < maxItemsDropped; i++) {
 			if (percentChance(itemDropChance)) {
 				dropPowerup();
-				itemsDropped++;
 			}
 		}
 		for (int i = 0; i < maxHealthDropped; i++) {
@@ -93,8 +91,10 @@ public abstract class Enemy extends Being {
 			}
 		}
 	}
+	// powerups spread out on drop to avoid clustering at the same point: more drops = more spread
 	private void dropHeal() {
 		Powerup powerup = new HealthPowerup(container, px + sx / 2, py + sy / 2);
+		powerup.addSpread(maxHealthDropped / 2);
 		container.addEntity(powerup);
 	}
 	private void dropPowerup() {
@@ -104,13 +104,18 @@ public abstract class Enemy extends Being {
 	protected Powerup getRandomItem() {
 		int powerupType = rand.nextInt(1);
 		Powerup powerup = null;
+		double ppx = px + sx / 2;
+		double ppy = py + sy / 2;
 		switch (powerupType) {
 		case 0:
-			powerup = new DamagePowerup(container, px + sx / 2, py + sy / 2);
+			powerup = new DamagePowerup(container, ppx, ppy);
 			break;
 		default:
 			Utility.warn("No powerup found for type #: " + powerupType);
 			break;
+		}
+		if (powerup != null) {
+			powerup.addSpread(maxItemsDropped / 2);
 		}
 		return powerup;
 	}

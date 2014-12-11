@@ -13,6 +13,9 @@ public class Boss extends Enemy {
 
 	public Boss(Level container, double xpos, double ypos) {
 		super(container, xpos, ypos);
+		itemDropChance = 50;
+		maxItemsDropped = 150;
+		maxHealthDropped = 150;
 	}
 
 	@Override
@@ -30,7 +33,7 @@ public class Boss extends Enemy {
 		fireTime++;
 		fireTime %= 100;
 		
-		int bullets = 20;
+		int bullets = 10;
 		
 		if (fireTime % 10 == 0) {
 
@@ -50,6 +53,6 @@ public class Boss extends Enemy {
 	@Override
 	public void resetStats() {
 		// TODO Auto-generated method stub
-		health = 10000;
+		health = 30000;
 	}
 }

@@ -9,6 +9,22 @@ public abstract class Powerup extends Entity {
 		super(container, xpos, ypos);
 	}
 
+	public void addSpread(double maxSpreadSpeed) {
+		double randAngle = rand.nextDouble() * (2 * Math.PI);
+		double spreadSpeed = rand.nextDouble() * maxSpreadSpeed;
+		double vx = Math.cos(randAngle) * spreadSpeed;
+		double vy = Math.sin(randAngle) * spreadSpeed;
+		this.vx = vx;
+		this.vy = vy;
+	}
+
+	public void preDt() {
+		double speedDecayMult = .9;
+		this.vx *= speedDecayMult;
+		this.vy *= speedDecayMult;
+		super.preDt();
+	}
+
 	public void postDt() {
 		super.postDt();
 		Player player = container.getAPlayer();
